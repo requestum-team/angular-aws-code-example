@@ -1,0 +1,22 @@
+.dialog {
+  &__file-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &::ng-deep {
+      .modal-actions {
+        gap: 1.5rem;
+        margin-top: 0;
+        padding: 0;
+        margin-bottom: 0;
+      }
+
+      .modal-actions__button {
+        &.mat-button-base {
+          min-width: 15rem;
+        }
+      }
+    }
+  }
+}

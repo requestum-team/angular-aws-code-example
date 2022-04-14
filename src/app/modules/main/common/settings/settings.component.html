@@ -1,0 +1,52 @@
+<ng-template #toolbarTemplate>
+  <div class="main__controls main__controls-desktop">
+    <button (click)="submitForm()" class="main__button" color="primary" mat-flat-button type="submit">
+      {{ 'BUTTON_NAME.SAVE' | translate }}
+    </button>
+    <button class="main__button" color="primary" mat-stroked-button type="button">
+      {{ 'BUTTON_NAME.CANCEL' | translate }}
+    </button>
+  </div>
+</ng-template>
+<div class="main">
+  <div class="main__section">
+    <h2 class="main__title">{{ 'SETTINGS.TITLE' | translate }}</h2>
+    <form [formGroup]="formGroup" class="main-info-form">
+      <div class="main-info-form__toggle">
+        <mat-slide-toggle color="accent" class="slide-toggle-wide" labelPosition="before" formControlName="receiveNotifications">
+          {{ 'SETTINGS.TOGGLE_NOTIFICATIONS' | translate }}
+        </mat-slide-toggle>
+      </div>
+      <div class="main-info-form__toggle">
+        <mat-slide-toggle color="accent" class="slide-toggle-wide" labelPosition="before" formControlName="defaultValidation">
+          {{ 'SETTINGS.TOGGLE_VALIDATION' | translate }}
+        </mat-slide-toggle>
+      </div>
+      <div class="main-info-form__toggle">
+        <mat-slide-toggle color="accent" class="slide-toggle-wide" labelPosition="before" formControlName="defaultRecordAccess">
+          {{ 'SETTINGS.TOGGLE_RECORD_ACCESS' | translate }}
+        </mat-slide-toggle>
+      </div>
+      <div class="main-info-form__toggle">
+        <mat-slide-toggle color="accent" class="slide-toggle-wide" labelPosition="before" formControlName="multiFactorAuth">
+          {{ 'SETTINGS.TOGGLE_MULTI_FACTOR' | translate }}
+        </mat-slide-toggle>
+      </div>
+      <ng-container *ngIf="form.multiFactorAuth.value">
+        <base-form-input
+          class="main-info-form__field"
+          [control]="form?.phone"
+          [placeholder]="'INPUT_NAME.PHONE' | translate"
+        ></base-form-input>
+      </ng-container>
+    </form>
+  </div>
+  <div class="main__controls">
+    <button (click)="submitForm()" class="main__button" color="primary" mat-flat-button type="submit">
+      {{ 'BUTTON_NAME.SAVE' | translate }}
+    </button>
+    <button (click)="cancel()" class="main__button" color="primary" mat-stroked-button>
+      {{ 'BUTTON_NAME.CANCEL' | translate }}
+    </button>
+  </div>
+</div>

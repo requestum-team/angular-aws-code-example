@@ -1,0 +1,35 @@
+<ng-template #toolbarTemplate>
+  <a href="#">{{ 'NOTIFICATIONS.MARK_AS_READ' | translate }}</a>
+</ng-template>
+<section class="main">
+  <ng-container *ngIf="notifications.length > 0; else emptyMesage">
+    <div class="notifications__list" *ngFor="let item of notifications">
+      <div class="notifications__item" [ngClass]="{ 'notifications__item-unread': item.read }">
+        <div class="notifications__message">
+          <ng-container [ngSwitch]="item.type">
+            <ng-container *ngSwitchCase="notificationsType.fileAccess">
+              {{ 'NOTIFICATION_TYPES.FILE_ACCESS' | translate: { id: item.fileId } }}
+            </ng-container>
+            <ng-container *ngSwitchCase="notificationsType.newEntry">
+              {{ 'NOTIFICATION_TYPES.NEW_ENTRY' | translate: { name: item.name } }}
+            </ng-container>
+          </ng-container>
+        </div>
+        <div class="notifications__date">
+          {{ item.date | date: 'medium' }}
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #emptyMesage>
+    <div class="notifications__empty">
+      <div class="notifications__bell">
+        <mat-icon class="notifications__icon-bell" [svgIcon]="'bell'"></mat-icon>
+      </div>
+      <div class="notifications__empty-title">
+        {{ 'NOTIFICATIONS.EMPTY_MESSAGE' | translate }}
+      </div>
+    </div>
+  </ng-template>
+</section>

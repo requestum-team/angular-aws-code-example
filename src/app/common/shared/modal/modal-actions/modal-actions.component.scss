@@ -1,0 +1,21 @@
+.modal-actions {
+  margin-top: 2rem;
+  justify-content: center;
+  gap: 2rem;
+
+  &.mat-dialog-actions {
+    flex-wrap: nowrap;
+  }
+
+  &__button {
+    font-size: 1.6rem;
+
+    &.mat-button-base {
+      min-width: 15rem;
+    }
+
+    &:only-child {
+      flex-grow: 1;
+    }
+  }
+}

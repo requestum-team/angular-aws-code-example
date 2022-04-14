@@ -1,0 +1,48 @@
+@import "variables/modules/breakpoints";
+
+.search {
+  display: flex;
+
+  background: var(--color-white);
+  padding: 2rem 1.5rem 3rem;
+  flex-direction: column;
+  margin: 0 -1.5rem;
+
+  &__input {
+    flex-grow: 1;
+  }
+
+  &__input-element {
+    &::ng-deep {
+      .mat-form-field-prefix {
+        margin-right: 1.6rem;
+      }
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+
+  @media (min-width: $tablet-s) {
+    padding: 2rem 3rem 3rem;
+    margin: 0;
+
+    &__button {
+      width: auto;
+      min-width: 15rem;
+      align-self: flex-start;
+    }
+  }
+
+  @media (min-width: $desktop-m) {
+    flex-direction: row;
+    align-items: center;
+    padding: 2rem 3rem;
+
+    &__button {
+      margin-left: 2rem;
+      align-self: center;
+    }
+  }
+}

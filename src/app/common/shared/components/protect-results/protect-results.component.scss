@@ -1,0 +1,118 @@
+@import "variables/modules/breakpoints";
+
+.main {
+  &__protect-results {
+    font-size: 1.4rem;
+    padding: 1.5rem;
+    line-height: 1.5;
+    margin: 0 -1.5rem;
+    background: var(--color-white);
+    color: var(--color-wireframe-2);
+  }
+
+  &__protect-result-info {
+    margin-left: 1rem;
+    flex-basis: 75%;
+  }
+
+  &__protect-result-id {
+    flex-basis: 100%;
+    max-width: 100%;
+    margin-top: 2rem;
+  }
+
+  &__protect-result-card {
+    padding: 1rem;
+    margin-top: 2.4rem;
+    border: 1px solid var(--color-wireframe-6);
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+
+    h3 {
+      font-size: 1.8rem;
+      font-family: var(--ff-title-font);
+      margin: 0 0 1.6rem;
+      color: var(--color-wireframe-1);
+      display: flex;
+      align-items: center;
+
+      .mat-icon-button {
+        width: 2rem;
+        height: 2rem;
+        color: var(--color-wireframe-4);
+        line-height: 2rem;
+
+        &:first-child {
+          margin: 0 2rem 0 auto;
+        }
+      }
+    }
+
+    .mat-icon-button {
+      &.download,
+      &.copy {
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        color: var(--color-wireframe-4);
+        line-height: 2rem;
+        right: 0;
+        top: 1.3rem;
+      }
+    }
+
+    .copy {
+      &.mat-icon-button {
+        right: 2rem;
+      }
+    }
+
+    .download {
+      &.mat-icon-button {
+        right: 6rem;
+      }
+    }
+  }
+
+  @media (min-width: $tablet-s) {
+    &__protect-results {
+      font-size: 1.6rem;
+      margin: 0;
+      margin-top: 2rem;
+      background: var(--color-white);
+      padding: 3rem;
+
+      p {
+        max-width: 60rem;
+      }
+    }
+
+    &__protect-result-card {
+      padding: 2rem;
+
+      .copy {
+        &.mat-icon-button {
+          right: 3.3rem;
+        }
+      }
+
+      .download {
+        &.mat-icon-button {
+          right: 7.7rem;
+        }
+      }
+    }
+
+    &__protect-result-info {
+      margin-left: 2rem;
+      flex-basis: calc(100% - 144px);
+    }
+  }
+
+  @media (min-width: $desktop-s) {
+    &__protect-result-info {
+      flex-basis: calc(80rem - 144px);
+    }
+  }
+}

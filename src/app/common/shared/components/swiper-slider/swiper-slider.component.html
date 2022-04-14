@@ -1,0 +1,7 @@
+<swiper (slideChange)="onSlideChange()" [className]="cssClass" [config]="swiperOpts">
+  <ng-template *ngFor="let slide of slides" swiperSlide>
+    <ng-container *ngTemplateOutlet="slideTemplate || defaultItem; context: { $implicit: slide }"></ng-container>
+  </ng-template>
+</swiper>
+
+<ng-template #defaultItem let-item>{{ item | json }}</ng-template>

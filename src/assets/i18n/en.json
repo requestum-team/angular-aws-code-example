@@ -1,0 +1,377 @@
+{
+  "INPUT_NAME": {
+    "EMAIL": "Email",
+    "EMAIL_ADDRESS": "Email address",
+    "PHONE": "Phone number",
+    "CODE": "Verification Code",
+    "MESSAGE": "Type a message",
+    "PASSWORD": "Password",
+    "NEW_PASSWORD": "New password",
+    "OLD_PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm password",
+    "REMEMBER_ME": "Remember me",
+    "ROLE": "Role",
+    "INSTITUTION_NAME": "Institution Name",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "ORGANIZATION_NAME": "Organisation name",
+    "PRIMARY_EMAIL": "Primary Email Contact",
+    "COUNTRY": "Country",
+    "STATE": "State",
+    "ADDRESS": "Address",
+    "WEBSITE": "Web site",
+    "AGREE": "Agree to",
+    "TERMS": "Terms of Service",
+    "AND": "and",
+    "PRIVACY": "Privacy Policy",
+    "PRIMARY_ORGANIZATION": "Primary Organisation",
+    "AVATAR": "Drag & drop files here or",
+    "AVATAR_BROWSE": "browse",
+    "BLOCKED_ID": "Enter the unique ID of a document",
+    "FILE_UPLOAD": "Upload from Files",
+    "STUDENT_ID": "Student ID",
+    "DATE": "Date of information",
+    "RECORD_TYPE": "Student Record",
+    "RECORD_ORGANISATION": "Originating Organization",
+    "EMAIL_OR_USER": "User Name or Email address",
+    "SEARCH": "Search"
+  },
+  "SELECT_NAME": {
+    "ORGANIZATION_TYPE": "Your organisation type",
+    "ORGANIZATION_SIZE": "Organisation size",
+    "ORGANIZATION": "Organisation"
+  },
+  "BUTTON_NAME": {
+    "FORGOT_PASSWORD": "Forgot password",
+    "LOGIN": "Sign in",
+    "SUBMIT": "Submit",
+    "ACCEPT": "Accept",
+    "CLOSE": "Close",
+    "CANCEL": "Cancel",
+    "DELETE": "Delete",
+    "CREATE": "Create",
+    "CHANGE": "Change",
+    "SAVE": "Save",
+    "PROTECT": "Protect",
+    "UPLOAD": "Upload",
+    "UPLOAD_OTHER": "Upload Another",
+    "RESET_PASSWORD": "Reset password",
+    "DELETE_ACCOUNT": "Delete account",
+    "OK": "Ok",
+    "JOIN": "Join",
+    "SEARCH": "Search",
+    "APPLY": "Apply"
+  },
+  "ORGANISATION_TYPE": {
+    "ACADEMIC": "Academic",
+    "DEVELOPER": "Developer",
+    "COMMERCIAL": "Commercial",
+    "GOVERNMENT": "Government"
+  },
+  "AUTH": {
+    "DO_NOT_HAVE_ACCOUNT": "Don’t have an account",
+    "HAVE_ACCOUNT": "Already have an account",
+    "JOIN": "Join us",
+    "JOIN_ORG": "Register Institution",
+    "NEED": "Do you need",
+    "HELP": "help",
+    "WELCOME": "Welcome back",
+    "LOGIN": "Sign in",
+    "PASSWORD_MUST": "Password must be",
+    "PASSWORD_MINLENGTH": "at least 6 characters",
+    "PASSWORD_UPPERCASE": "at least one capital letter",
+    "PASSWORD_DIGIT": "at least one number",
+    "FORGOT_PASSWORD_TITLE": "Forgot your password",
+    "FORGOT_PASSWORD_SUBTITLE": "Enter your email and we'll send you instructions for creating a new one",
+    "RESET_PASSWORD_TITLE": "New password",
+    "RESET_PASSWORD_SUBTITLE": "Please enter a new password to recover your account"
+  },
+  "PROFILE_MENU": {
+    "PROFILE": "Profile",
+    "ORGANIZATION": "Organization"
+  },
+  "PENDING_MENU": {
+    "ACCEPT": "Accept",
+    "REJECT": "Reject"
+  },
+  "PROFILE": {
+    "ORGANIZATION_TITLE": "Organization",
+    "ORGANIZATION_YOURS": "Your organizations",
+    "ORGANIZATION_JOIN": "Join an Organization",
+    "ORGANIZATION_CANNOT_JOIN": "You cannot join",
+    "ORGANIZATION_SEARCH": "Organization name",
+    "ORGANIZATION_ID": "Organization ID",
+    "ORGANIZATION_EMAIL": "Organization Email",
+    "ORGANIZATION_STATUS": "Status",
+    "ORGANIZATION_JOIN_REQUEST": "Request to Join",
+    "ORGANIZATION_PARTNERS": "Organization’s partners",
+    "ORGANIZATION_USERS": "Organization’s users",
+    "ORGANIZATION_TOGGLE_TITLE1": "Add records to Bloc.ed Vault by default?",
+    "ORGANIZATION_TOGGLE_TITLE2": "Allow users from outside your domain to join",
+    "ORGANIZATION_TOOLTIP_REQUEST": "This organization does not allow users from outside their domain to join",
+    "SEND_TO_REGISTERED": "Send to registered user",
+    "SEND_VIA_EMAIL": "Send via Email",
+    "SHARING_SUBTITLE": "Default Sharing",
+    "API_KEY": "API key",
+    "API_KEY_PLACEHOLDER": "Your Organisation's API Key",
+    "USER_NAME": "User name",
+    "EMAIL_ADDRESS": "Email address",
+    "ADD_USER": "Add user",
+    "STATUS_PENDING": "pending"
+
+  },
+  "ORGANIZATION": {
+   "ADMINISTRATORS_TITLE": "Administrators",
+   "SHARING_TITLE": "Default Sharing",
+   "VAULT_TITLE": "Records to Vault by default",
+   "SHARING_VALUE": "Your Approved Partners",
+   "VAULT_VALUE": "Yes"
+  },
+  "PHOTO_MENU": {
+    "CHANGE": "Change photo",
+    "ADD": "Add photo",
+    "DELETE": "Delete"
+  },
+  "EXPANSION_MENU": {
+    "DOWNLOAD": "Download",
+    "COPY": "Copy",
+    "SHARE": "Share",
+    "RECORD_AVAILABILITY": "Record Availability"
+  },
+  "MODALS": {
+    "CREATE": {
+      "TITLE": "Create"
+    },
+    "EDIT": {
+      "TITLE": "Change"
+    },
+    "REMOVE": {
+      "TITLE": "Delete"
+    },
+    "JOIN_TO_ORGANISATION": {
+      "TITLE": "Request to join",
+      "MESSAGE": "Are you sure, you want to join this organization?"
+    },
+    "DELETE_REQUEST": {
+      "TITLE": "Delete request",
+      "MESSAGE": "Are you sure, you want to delete this request?"
+    },
+    "ACCEPT_REQUEST": {
+      "TITLE": "Accept request",
+      "MESSAGE": "Are you sure, you want to accept this request?"
+    },
+    "REJECT_REQUEST": {
+      "TITLE": "Reject request",
+      "MESSAGE": "Are you sure, you want to reject this request?"
+    },
+    "ADD_PARTNER": {
+      "TITLE": "Add partner organization",
+      "MESSAGE": "Are you sure, you want to add this organization to partners?"
+    },
+    "DELETE_PARTNER": {
+      "TITLE": "Delete partner organization",
+      "MESSAGE": "Are you sure, you want to delete this organization from partners?"
+    },
+    "ADD_MEMBER": {
+      "TITLE": "Add memeber",
+      "MESSAGE": "Are you sure, you want to add this user to members?"
+    },
+    "UPDATE_API_KEY": {
+      "TITLE": "Update api key",
+      "MESSAGE": "Are you sure you want to update API key of your organization?"
+    },
+    "SHARE_RECORD": {
+      "TITLE": "Share this record with"
+    },
+    "SHARE_WITH": {
+      "TITLE": "Share this document with"
+    },
+    "RECORD_AVAILABILITY": {
+      "TITLE": "Record Availability"
+    }
+  },
+  "HOME": {
+    "QUICK_VERIFICATION": "Quick verification",
+    "QUICK_PROTECTION": "Quick protection",
+    "SEARCH_TITLE": "Exact Match found for document",
+    "SEARCH_ID": "Bloc.ed ID",
+    "NO_FILES_TITLE": "No record matching this Bloc.ed ID was found",
+    "NO_FILES_DESC": "This indicates the document you are assessing could have been altered or is not legitimate.",
+    "PROTECT_RESULT_TEXT": "Send the below QR code to allow recipients to verify key details of this record, without needing the original file",
+    "PROTECT_RESULT_TITLE":"Bloc.ed Verification",
+    "PROTECT_RESULT_SUBTITLE":"Bloc.ed ID",
+    "PROTECT_RESULT_DESC": "Visit verify.com to validate the authenticity of this document directly with the originating Institution."
+  },
+  "MESSAGE": {
+    "EMPTY_LIST": "No search results",
+    "RESET_PASSWORD_TITLE": "Reset your password",
+    "RESET_PASSWORD_MESSAGE": "We have emailed your password reset link",
+    "RESET_PASSWORD_SUCCESS_TITLE": "Success",
+    "RESET_PASSWORD_SUCCESS_MESSAGE": "Your password was successfully updated",
+    "RESET_PASSWORD_SUCCESS_BTN": "Go to sign in",
+    "OK": "Ok",
+    "REGISTRATION_TITLE": "Thank you for registering",
+    "REGISTRATION_MESSAGE": "Please verify your account using the link we have just emailed you. If you haven't received the email after a few minutes, please check your spam folder.",
+    "PHOTO_DELETE_TITLE": "Delete photo",
+    "PHOTO_CHANGE_TITLE": "Change photo",
+    "PHOTO_DELETE_DESC": "Are you sure you want to delete photo? After deletion all data will be lost.",
+    "DELETE_ACCOUNT_TITLE": "Delete account",
+    "DELETE_ACCOUNT_DESC": "Are you sure you want to delete account? After deletion all data will be lost.",
+    "CHANGE_PASSWORD_TITLE": "Change password"
+  },
+  "NAVIGATION": {
+    "HOME": "Home",
+    "PROTECT": "Protect",
+    "VALIDATE": "Validate & Retrieve",
+    "ANALYTICS": "Analytics",
+    "SETTINGS": "Settings",
+    "HELP": "Help Center",
+    "PROFILE": "Profile",
+    "ORGANIZATION": "Organization"
+  },
+  "CUSTOM_NOTIFICATIONS": {
+    "HELLO": "Hello!",
+    "ERROR": "Error",
+    "SUCCESS": "Success",
+    "WRONG_ROLE": "You're not authorized to access the veterinarian and approver dashboards.",
+    "WRONG_ROLE_ADMIN": "You're not authorized to access the admin panel.",
+    "WRONG_CREDENTIALS": "Entered email address or password is not correct. Please, try again."
+  },
+  "ERROR_MESSAGE": {
+    "FORM_EMPTY": "At least one field must be populated",
+    "REQUIRED": "{{fieldName}} is required.",
+    "LOGIN_REQUIRED": "Please, enter your {{fieldName}} to login.",
+    "DECLINE_REQUIRED": "It’s required to specify a reason for the declining.",
+    "MUST_MATCH": "Passwords do not match. Please try again.",
+    "WRONG_OPTION": "Please, select an option from the list.",
+    "MIN": "The value must be higher than or equal to {{value}}.",
+    "MIN_LENGTH": "The value must contain at least {{value}} characters.",
+    "MAX": "The value must be less than or equal to {{value}}.",
+    "MAX_LENGTH": "The value must not contain more than {{value}} characters.",
+    "EMAIL": "Email address is not valid.",
+    "PHONE": "Incorrect format of phone number.",
+    "LETTERS_NUMBERS": "The value must contain letters and numbers only.",
+    "URL": "Invalid url format.",
+    "PASSWORD": "The password must consist of letters (uppercase and lowercase), numbers and symbols.",
+    "VALID_NAME": "The field should not start with a space and should not contain two or more spaces in a row.",
+    "NOT_UNIQUE_VALUE": "This email is already used.",
+    "ONE_DIGIT": "The value must contain at least one digit",
+    "ONE_UPPERCASE": "The value must contain at least one uppercase letter"
+  },
+  "BACKEND_ERRORS": {
+    "INVALID_API_KEYAUTHENTICATION_FAILED": "Invalid API Key. Authentication failed!",
+    "INVALID_REQUEST": "Invalid Request",
+    "INVALID_GRANT": "Invalid email or password",
+    "NOT_FOUND": "Not found",
+    "THE_REASON_IS_MISSING": "The reason is missing",
+    "ACCESS_DENIED": "You haven't got permissions for access to this area.",
+    "USER_NOT_ALLOWED_BY_CLIENT": "This user is not allowed by the client",
+    "ERROR": {
+      "CONSTRAINT": {
+        "USER_NOT_FOUND": "User is not found"
+      }
+    }
+  },
+  "PAGE_NAME": {
+    "PROTECT": "Protect",
+    "PROFILE": "Profile",
+    "HOME": "Home",
+    "ORGANIZATION": "Organization",
+    "ANALYTICS": "Analytics",
+    "VALIDATE": "Search",
+    "VALIDATE_RECORD": "Search / Record",
+    "SETTINGS": "Settings",
+    "HELP": "Help",
+    "NOTIFICATIONS": "Notifications"
+  },
+  "HINT": {
+    "PROTECT": "Add your institution's documents to the Bloc.ed Chain, making it verifiable by partners.",
+    "SETTINGS": "Let’s adjust the settings for your preferences, your user profile and your organization.",
+    "ANALYTICS":"Protecting your most important records is tough work! So this is how you’re doing. Nice job.",
+    "HELP": "Because we know there comes a time when something goes wrong, or doesn’t make sense, here are some of the most common answers and resolutions"
+  },
+  "MISC": {
+    "THIS_FIELD": "This field"
+  },
+  "FILE_UPLOADER": {
+    "INVALID_FORMAT": "File is not an image",
+    "SELECTED_FILES_MAX": "Numbers of possible files to attach - no more than {{count}}",
+    "FILE_SIZE": "The file size exceeds the limit of {{size}}Mb. Please, keep the file within the size limit."
+  },
+  "ORGANISATION_SHARING": {
+    "OPEN": "Any Partner Organization",
+    "INTERNAL": "My Organization Only",
+    "PARTNER": "My Trusted Partners"
+  },
+  "LOADING": {
+    "TITLE": "Loading",
+    "DESCRIPTION": "This may take a moment. Hang in there!"
+  },
+  "SEARCH": {
+    "INFO_TITLE": "You can fill in this information",
+    "TOGGLE_TITLE": "Only Mine",
+    "BLOCED_TITLE": "OR input the unique ID",
+    "FILE_TITLE": "OR put a file here",
+    "SEARCH_TITLE": "Records",
+    "SORT": "Sort by",
+    "SEND_TO_REGISTERED": "Send to registered user",
+    "SEND_VIA_EMAIL": "Send via Email"
+  },
+  "SEARCH_SELECT": {
+    "RECENT": "Most Recent",
+    "ASC": "Ascending (A-Z)",
+    "DESC": "Descending (Z-A)"
+  },
+  "RECORD": {
+    "STUDENT_OPTION": "Student Record",
+    "CORRESPONDENCE_OPTION": "Correspondence",
+    "FINANCIAL_OPTION": "Financial",
+    "GOVERNANCE_OPTION": "Governance",
+    "REVIEW_OPTION": "Review"
+  },
+  "PROTECT": {
+    "RECORD_TYPE_TITLE": "Record Type",
+    "RECORD_DETAILS_TITLE": "Record Details",
+    "RECORD_SHARING_TITLE": "Record Availability",
+    "UPLOAD_TITLE": "Upload a file",
+    "FILE_NAME": "File Name",
+    "BLOC_ID": "Bloc.ed ID",
+    "SEND_CODE": "Send the below QR code to allow recipients to verify key details of this record, without needing the original file",
+    "INFO_TITLE": "Recipients and partner institutions can now verify the authenticity of the file by submitting it to Bloc.ed, or by entering the Bloc.ID"
+  },
+
+  "SETTINGS": {
+    "TOGGLE_NOTIFICATIONS": "Receive notifications of when partners access your documents",
+    "TOGGLE_VALIDATION": "Set default validation and search scope to your organization’s records",
+    "TOGGLE_RECORD_ACCESS": "Set default record access to all Bloc.ed Partner Organizations",
+    "TOGGLE_MULTI_FACTOR": "Require multi-factor authentication on your account",
+    "TITLE": "Preferences"
+  },
+  "ANALYTICS": {
+    "DOCUMENT_TYPE_TITLE": "Document Breakdown by Type",
+    "YOUR_DOCUMENTS_TITLE": "Your Documents Secured",
+    "NEW_DOCUMENTS_TITLE": "New Documents Secured",
+    "NETWORK_SECURITY_TITLE": "Network Security Status",
+    "NETWORK_SECURITY_SUBTITLE": "Super secure",
+    "THAN_LAST_YEAR": "than last year",
+    "SAME_LAST_YEAR": "same as last year"
+  },
+  "HELP": {
+    "EXPANSION_TITLE": "How do I verify the authenticity of a document that has been submitted to me?",
+    "EXPANSION_DESCRIPTION": "Text answer to the question"
+  },
+  "NOTIFICATION_TYPES": {
+    "NEW_ENTRY": "The user {{name}} added a new entry",
+    "FILE_ACCESS": "You were given access to the file {{id}}"
+  },
+
+  "NOTIFICATIONS": {
+    "MARK_AS_READ": "Mark all as read",
+    "VIEW_ALL": "View all",
+    "EMPTY_MESSAGE": "You don't have any notifications"
+  }
+
+
+
+
+}

@@ -1,0 +1,65 @@
+<form [formGroup]="formGroup" class="main main__form">
+  <section class="main__content">
+    <div class="wrapper">
+      <div class="main__avatar-wrap">
+        <photo-menu [control]="form.logo" [name]="myOrganisation?.name"></photo-menu>
+        <div class="main__personal">
+          <div class="main__personal-name">{{ myOrganisation?.name }}</div>
+          <cropped-text [text]="myOrganisation?.primaryContact?.email" class="main__personal-email"></cropped-text>
+        </div>
+      </div>
+      <div class="main__fields">
+        <base-form-input
+          [control]="form?.name"
+          [placeholder]="'INPUT_NAME.INSTITUTION_NAME' | translate"
+          class="main__input"
+        ></base-form-input>
+        <base-form-input
+          [control]="getGroup('primaryContact')?.get('email')"
+          [placeholder]="'INPUT_NAME.EMAIL' | translate"
+          class="main__input"
+        ></base-form-input>
+      </div>
+    </div>
+  </section>
+  <section class="main__sharing">
+    <div class="wrapper">
+      <h2 class="main__subtitle">{{ 'PROFILE.SHARING_SUBTITLE' | translate }}</h2>
+      <sharing-type formControlName="sharingDefault"></sharing-type>
+    </div>
+  </section>
+
+  <section class="main__toggle">
+    <div class="wrapper">
+      <mat-slide-toggle formControlName="shouldUseVault" color="accent" labelPosition="before">
+        {{ 'PROFILE.ORGANIZATION_TOGGLE_TITLE1' | translate }}
+      </mat-slide-toggle>
+    </div>
+  </section>
+
+  <section class="main__toggle">
+    <div class="wrapper">
+      <mat-slide-toggle formControlName="allowExternalUsers" color="accent" labelPosition="before">
+        {{ 'PROFILE.ORGANIZATION_TOGGLE_TITLE2' | translate }}
+      </mat-slide-toggle>
+    </div>
+  </section>
+
+  <section class="main__key">
+    <div class="wrapper">
+      <h2 class="main__subtitle">{{ 'PROFILE.API_KEY' | translate }}</h2>
+      <div class="main__key-input">
+        <base-form-input
+          [showCopy]="true"
+          [disabled]="true"
+          [value]="apiKey?.apiKey"
+          [placeholder]="'PROFILE.API_KEY_PLACEHOLDER' | translate"
+          class="main__input"
+        ></base-form-input>
+        <button class="main__key-refresh" mat-icon-button type="button">
+          <mat-icon [svgIcon]="'refresh'"></mat-icon>
+        </button>
+      </div>
+    </div>
+  </section>
+</form>

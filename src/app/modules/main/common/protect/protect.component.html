@@ -1,0 +1,22 @@
+<ng-template #toolbarTemplate>
+  <ng-container *ngTemplateOutlet="actionsTemplate; context: { $implicit: true }"></ng-container>
+</ng-template>
+
+<div class="main">
+  <protect-form #protectForm [(document)]="document" [(file)]="file" *ngIf="!document"></protect-form>
+
+  <protect-info [document]="document" [file]="file" *ngIf="document"></protect-info>
+
+  <ng-container *ngTemplateOutlet="actionsTemplate; context: { $implicit: false }"></ng-container>
+</div>
+
+<ng-template #actionsTemplate let-isDesktop>
+  <div class="main__controls" [class.main__controls-desktop]="isDesktop">
+    <button (click)="submitForm()" *ngIf="!document" class="main__button" color="primary" mat-flat-button type="submit">
+      {{ 'BUTTON_NAME.UPLOAD' | translate }}
+    </button>
+    <button (click)="document = null" *ngIf="document" class="main__button" color="primary" mat-flat-button type="button">
+      {{ 'BUTTON_NAME.UPLOAD_OTHER' | translate }}
+    </button>
+  </div>
+</ng-template>

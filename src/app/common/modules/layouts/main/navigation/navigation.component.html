@@ -1,0 +1,26 @@
+<div class="navigation" [ngClass]="{ transitioned: (isHalfExpanded$ | async) === false }">
+  <logo class="navigation__logo"></logo>
+
+  <mat-nav-list class="navigation__list">
+    <ng-container *ngFor="let item of links">
+      <ng-container *ngIf="item.icon === 'settings'"><div class="navigation__spacer"></div></ng-container>
+      <a
+        class="navigation__item"
+        mat-list-item
+        [routerLink]="item.link"
+        (click)="onNavigation($event)"
+        routerLinkActive="navigation__item_active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <mat-icon class="navigation__item-icon" *ngIf="item.icon" fontSet="material-icons-outlined" [svgIcon]="item.icon"></mat-icon>
+        <span class="navigation__item-text">
+          {{ item.label | translate }}
+        </span>
+      </a>
+    </ng-container>
+  </mat-nav-list>
+</div>
+<div class="navigation__crack" (click)="toggleHalf()">
+  <mat-icon *ngIf="(isHalfExpanded$ | async) === true" [svgIcon]="'arrow-left'"></mat-icon>
+  <mat-icon *ngIf="(isHalfExpanded$ | async) === false" [svgIcon]="'arrow-right'"></mat-icon>
+</div>

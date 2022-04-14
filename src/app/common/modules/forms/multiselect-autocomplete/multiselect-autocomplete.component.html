@@ -1,0 +1,24 @@
+<div class="chip-list-wrapper">
+  <mat-chip-list #chipList>
+    <ng-container *ngFor="let select of selectData">
+      <mat-chip class="cardinal-colors" (click)="removeChip(select)">
+        {{ select.item | pathParse: displaySearchField }}
+        <mat-icon [svgIcon]="'cross'" class="mat-chip-remove"></mat-icon>
+      </mat-chip>
+    </ng-container>
+  </mat-chip-list>
+</div>
+
+<mat-form-field class="full-width" [appearance]="appearance">
+  <input matInput type="text" [placeholder]="placeholder" [matAutocomplete]="auto" [formControl]="selectControl" />
+</mat-form-field>
+
+<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn.bind(this)">
+  <mat-option *ngFor="let data of filteredData | async">
+    <div (click)="optionClicked($event, data)">
+      <mat-checkbox [checked]="data.selected" (change)="toggleSelection(data)" (click)="$event.stopPropagation()">
+        <ng-container *ngTemplateOutlet="optionTemplate; context: { $implicit: data.item }"></ng-container>
+      </mat-checkbox>
+    </div>
+  </mat-option>
+</mat-autocomplete>

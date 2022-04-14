@@ -1,0 +1,32 @@
+<label>
+  <mat-form-field [appearance]="appearance" [class.copied]="isCopyingAvailable">
+    <mat-label *ngIf="placeholder">{{ placeholder }}</mat-label>
+    <mat-icon *ngIf="icon" matPrefix [svgIcon]="icon"></mat-icon>
+    <button
+      *ngIf="isCopyingAvailable"
+      mat-icon-button
+      matSuffix
+      tabindex="-1"
+      type="button"
+      [cdkCopyToClipboard]="control.value"
+      (cdkCopyToClipboardCopied)="showCopyNotification()"
+    >
+      <mat-icon svgIcon="paste-text"></mat-icon>
+    </button>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      [cdkAutosizeMinRows]="minRows"
+      [cdkAutosizeMaxRows]="maxRows"
+      [formControl]="formControl"
+      [placeholder]="placeholder"
+      [maxLength]="maxLength"
+      [required]="required"
+      [readonly]="readonly"
+    ></textarea>
+    <mat-hint *ngIf="hint || (maxLength && shouldShowCount)">{{ hint }}</mat-hint>
+    <mat-hint class="count" *ngIf="maxLength && shouldShowCount">{{ control.value?.length ?? 0 }} / {{ maxLength }}</mat-hint>
+    <mat-error *ngIf="control?.invalid && errorMessage">{{ errorMessage }}</mat-error>
+  </mat-form-field>
+</label>

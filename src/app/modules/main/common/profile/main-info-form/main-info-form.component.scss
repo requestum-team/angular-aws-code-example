@@ -1,0 +1,119 @@
+@import "variables/modules/breakpoints";
+
+:host {
+  display: block;
+
+  @media (min-width: $tablet-s) {
+    background-color: var(--color-white);
+    padding: 3rem;
+  }
+}
+
+.main-info-form {
+  max-width: 60rem;
+
+  &__icon-button {
+    display: none;
+    color: var(--color-wireframe-4);
+    align-self: flex-start;
+    margin-top: 1rem;
+    margin-left: auto;
+
+    @media (min-width: $tablet-s) {
+      display: block;
+    }
+  }
+
+  &__personal {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3rem;
+    max-width: 60%;
+  }
+
+  &__personal-name {
+    font-family: var(--ff-title-font);
+    font-size: 1.8rem;
+    font-weight: var(--fw-bold);
+    margin: 0 0 0.8rem;
+  }
+
+  &__personal-email {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: var(--color-wireframe-3);
+  }
+
+  &__avatar-wrap {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__fields {
+    margin-top: 2rem;
+  }
+
+  &__input {
+    @media (min-width: $tablet-s) {
+      flex-grow: 1;
+    }
+  }
+
+  &__row {
+    @media (min-width: $tablet-s) {
+      display: flex;
+      column-gap: 2rem;
+    }
+
+    &_action {
+      cursor: pointer;
+      position: relative;
+    }
+  }
+
+  &__controls {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+
+    @media (min-width: $tablet-s) {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      padding-top: 2rem;
+    }
+  }
+
+  &__button {
+    font-size: 1.6rem;
+    min-width: 16.2rem;
+    margin-top: 1rem;
+
+    @media (min-width: $tablet-s) {
+      font-size: 1.6rem;
+      min-width: 13rem;
+      margin-top: 0;
+
+      &:first-child {
+        margin-right: 2rem;
+      }
+    }
+
+    &_delete-account {
+      margin-top: 3rem;
+
+      @media (min-width: $tablet-s) {
+        margin: 0 0 0 auto;
+      }
+    }
+  }
+
+  &__input-action-text {
+    position: absolute;
+    top: 3.5rem;
+    right: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--color-light-blue);
+  }
+}

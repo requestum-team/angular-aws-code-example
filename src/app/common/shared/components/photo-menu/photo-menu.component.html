@@ -1,0 +1,26 @@
+<dropdown
+  [openOnHover]="true"
+  [displayArrow]="false"
+  [items]="items"
+  [disablePadding]="true"
+  class="photo-menu"
+  panelClass="photo-menu-panel"
+>
+  <figure class="photo-menu__logo">
+    <img class="photo-menu__logo-image" src="/assets/img/jpg/default-avatar.jpg" alt="Logo" />
+    <div class="photo-menu__logo-overlay">
+      <mat-icon class="photo-menu__logo-icon" [svgIcon]="'camera-2'"></mat-icon>
+    </div>
+  </figure>
+</dropdown>
+
+<ng-template #dropdownPhotoItemTemplate let-item>
+  <ng-container *ngIf="toPhotoMenuItemType(item) as item">
+    <div (click)="item.action()" *ngIf="item.action" class="photo-menu__item">
+      <span class="photo-menu__item-text">{{ item.title | translate }}</span>
+    </div>
+    <a *ngIf="item.link" [routerLink]="item.link" class="photo-menu__item" routerLinkActive="active">
+      <span class="photo-menu__item-text">{{ item.title | translate }}</span>
+    </a>
+  </ng-container>
+</ng-template>

@@ -1,0 +1,92 @@
+<div class="file-uploader">
+  <div
+    class="file-uploader__panel"
+    dndFile
+    (fileDropped)="fileChangeHandler($event)"
+    [class.error]="isFileError"
+    [class.avatar]="isAvatar"
+    (fileDragleave)="fileDragleave.emit($event)"
+    (fileDragover)="fileDragover.emit($event)"
+    [style.display]="multiple || (!multiple && !selectFile?.length) || (isAvatar && !showCropper) ? null : 'none'"
+  >
+    <input
+      #fileInput
+      type="file"
+      [accept]="fileType"
+      [multiple]="multiple"
+      class="file-uploader__input"
+      (change)="fileChangeHandler($event)"
+    />
+    <p class="file-uploader__title" *ngIf="placeholder" [class.avatar]="isAvatar">
+      <mat-icon *ngIf="!isAvatar" [svgIcon]="'download'"></mat-icon>
+      {{ placeholder | translate }}
+      <span *ngIf="placeholderBrowse" class="file-uploader__browse">
+        {{ placeholderBrowse | translate }}
+      </span>
+    </p>
+  </div>
+
+  <ng-container *ngIf="isAvatar">
+    <image-cropper
+      class="file-uploader__image-cropper"
+      (imageCropped)="imageCropped($event)"
+      [imageChangedEvent]="imageChangedEvent"
+      [roundCropper]="true"
+      [maintainAspectRatio]="true"
+      [resizeToWidth]="345"
+      [cropperMinWidth]="128"
+      (imageLoaded)="imageLoaded()"
+      [style.display]="showCropper ? null : 'none'"
+      [transform]="transform"
+      [onlyScaleDown]="true"
+    ></image-cropper>
+    <div class="file-uploader__scale-slider" *ngIf="selectFile?.length && showCropper">
+      <mat-icon class="file-uploader__decrease-ico" [svgIcon]="'union'"></mat-icon>
+      <mat-slider min="1" max="5" step="0.1" (change)="scaleImage($event)"></mat-slider>
+      <mat-icon class="file-uploader__increase-ico" [svgIcon]="'union'"></mat-icon>
+    </div>
+  </ng-container>
+
+  <ul *ngIf="selectFile?.length && !isAvatar" class="file-uploader__list">
+    <li
+      *ngFor="let file of selectFile; let idx = index"
+      class="file-uploader__file-item"
+      [class.error]="isFileMaxSize(file) || filesWithError.has(file.name)"
+      [style.height]="previewHeight + 'px'"
+    >
+      <mat-spinner class="file-uploader__loader" *ngIf="filesOnLoading.has(file.name)" [diameter]="20"></mat-spinner>
+      <img
+        class="file-uploader__preview"
+        [width]="previewWidth"
+        [height]="previewHeight"
+        [src]="getNativeFileUrl(file)"
+        [alt]="file.name"
+        *ngIf="file.type.includes('img')"
+      />
+      <div class="file-uploader__file-name">
+        <mat-icon [svgIcon]="'attachment-pdf'"></mat-icon>
+        <cropped-text [text]="file.name"></cropped-text>
+        <span class="file-uploader__file-size">{{ getFileSize(file.size) }}</span>
+      </div>
+      <div class="file-uploader__file-actions" [ngClass]="actionsPositionClasses" *ngIf="!filesOnLoading.has(file.name)">
+        <button
+          *ngIf="!multiple"
+          class="file-uploader__action"
+          [color]="actionsColor"
+          mat-icon-button
+          type="button"
+          (click)="chooseAnotherFile()"
+        >
+          <mat-icon svgIcon="refresh"></mat-icon>
+        </button>
+        <button class="file-uploader__action" [color]="actionsColor" mat-icon-button type="button" (click)="removeFile(idx, $event)">
+          <mat-icon svgIcon="delete"></mat-icon>
+        </button>
+      </div>
+    </li>
+  </ul>
+  <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+  <mat-error class="file-uploader__error" *ngIf="isFileError">
+    {{ fileErrorMessage }}
+  </mat-error>
+</div>

@@ -1,0 +1,98 @@
+<ng-container *ngIf="showSearch">
+  <ng-template #defaultSearchTemplate>
+    <div class="organization-search mobile-pd">
+      <base-form-input
+        [control]="myControl"
+        [inputType]="InputType.text"
+        [placeholder]="'PROFILE.ORGANIZATION_SEARCH' | translate"
+        autocomplete="off"
+        class="organization-search__input"
+        [matAutocomplete]="auto"
+        [showClear]="true"
+        (clear)="onClear()"
+        #autocompleteInput
+      ></base-form-input>
+      <button class="organization-search__button" color="primary" mat-button (click)="btnIcon === 'search' ? onSearch() : btnClick()">
+        <mat-icon [svgIcon]="btnIcon"></mat-icon>
+      </button>
+      <mat-autocomplete
+        autoActiveFirstOption
+        #auto="matAutocomplete"
+        (optionSelected)="selectOption($event)"
+        [displayWith]="getOptionText.bind(this)"
+      >
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{ option | pathParse: searchField }}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+  </ng-template>
+
+  <ng-container *ngTemplateOutlet="columns?.searchTemplate ? columns.searchTemplate : defaultSearchTemplate"></ng-container>
+</ng-container>
+
+<mat-accordion class="organization-search__results" [ngClass]="customTableClass">
+  <mat-expansion-panel
+    *ngFor="let item of displayData"
+    class="profile-columns__expansion mat-elevation-z0"
+    [expanded]="isExpandableOpen"
+    [disabled]="!isExpandable"
+  >
+    <mat-expansion-panel-header>
+      <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"></ng-container>
+    </mat-expansion-panel-header>
+    <ng-container *ngIf="columns?.detailsTemplate">
+      <ng-container *ngTemplateOutlet="columns.detailsTemplate; context: { $implicit: item }"></ng-container>
+    </ng-container>
+  </mat-expansion-panel>
+</mat-accordion>
+<ng-template #itemTemplate let-item>
+  <div class="organization" [class.can-hover]="onRowClick" (click)="onRowClick && onRowClick(item)">
+    <ng-container *ngFor="let column of columns?.columns">
+      <ng-container *ngIf="column?.columnPlacement === ColumnPlacement.start">
+        <div *ngIf="column.title">{{ column.title }}</div>
+        <ng-container
+          *ngTemplateOutlet="column.columnTemplate; context: { $implicit: item | pathParse: column.columnName, item: item }"
+        ></ng-container>
+      </ng-container>
+    </ng-container>
+
+    <div class="organization__info">
+      <ng-container *ngFor="let column of columns?.columns">
+        <div
+          class="organization__row"
+          *ngIf="
+            !column.columnTemplate && column?.columnPlacement !== ColumnPlacement.start && column?.columnPlacement !== ColumnPlacement.end
+          "
+        >
+          <div class="organization__col">{{ column.title }}</div>
+          <div class="organization__col">
+            <cropped-text *ngIf="column.isCropped; else noCropped" [text]="item | pathParse: column.columnName"></cropped-text>
+            <ng-template #noCropped>{{ item | pathParse: column.columnName }}</ng-template>
+          </div>
+        </div>
+        <div
+          class="organization__row"
+          *ngIf="
+            column.columnTemplate && column?.columnPlacement !== ColumnPlacement.start && column?.columnPlacement !== ColumnPlacement.end
+          "
+        >
+          <div class="organization__col" *ngIf="column.title">{{ column.title }}</div>
+          <div class="organization__col">
+            <ng-container
+              *ngTemplateOutlet="column.columnTemplate; context: { $implicit: item | pathParse: column.columnName, item: item }"
+            ></ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <ng-container *ngFor="let column of columns?.columns">
+      <ng-container *ngIf="column?.columnPlacement === ColumnPlacement.end">
+        <div *ngIf="column.title">{{ column.title }}</div>
+        <ng-container
+          *ngTemplateOutlet="column.columnTemplate; context: { $implicit: item | pathParse: column.columnName, item: item }"
+        ></ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+</ng-template>

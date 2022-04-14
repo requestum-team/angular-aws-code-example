@@ -1,0 +1,16 @@
+:host {
+  display: contents;
+  max-width: 100%;
+}
+
+.cropped-text {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &__inner {
+    white-space: nowrap;
+    cursor: pointer;
+  }
+}

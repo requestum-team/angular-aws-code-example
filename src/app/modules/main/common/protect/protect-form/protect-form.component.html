@@ -1,0 +1,59 @@
+<form [formGroup]="formGroup" class="main-info-form" (ngSubmit)="onSubmit()">
+  <loader-container [isLoading]="isLoading">
+    <div class="main-info-form__content">
+      <section class="main-info-form__fields main-info-form__section">
+        <div class="main-info-form__section-wrapper">
+          <h3 class="main-info-form__subtitle">{{ 'PROTECT.RECORD_TYPE_TITLE' | translate }}</h3>
+          <base-select
+            class="main-info-form__field"
+            [control]="form?.recordType"
+            [options]="recordOptions"
+            [placeholder]="'INPUT_NAME.RECORD_TYPE' | translate"
+          ></base-select>
+        </div>
+      </section>
+      <section class="main-info-form__fields main-info-form__section">
+        <div class="main-info-form__section-wrapper">
+          <h3 class="main-info-form__subtitle">{{ 'PROTECT.RECORD_DETAILS_TITLE' | translate }}</h3>
+          <base-form-input
+            class="main-info-form__field"
+            [control]="form?.subjectId"
+            [placeholder]="'INPUT_NAME.STUDENT_ID' | translate"
+          ></base-form-input>
+          <base-datepicker
+            class="main-info-form__field"
+            [control]="form?.doi"
+            [placeholder]="'INPUT_NAME.DATE' | translate"
+          ></base-datepicker>
+          <base-select
+            class="main-info-form__field"
+            [control]="form?.organization"
+            [options]="organizations"
+            [placeholder]="'INPUT_NAME.RECORD_ORGANISATION' | translate"
+          ></base-select>
+        </div>
+      </section>
+      <section class="main__sharing main-info-form__section">
+        <div class="main-info-form__section-wrapper">
+          <h3 class="main-info-form__subtitle">{{ 'PROTECT.RECORD_SHARING_TITLE' | translate }}</h3>
+          <sharing-type formControlName="Releasability"></sharing-type>
+        </div>
+      </section>
+      <section class="main__sharing main-info-form__section">
+        <div class="main-info-form__section-wrapper">
+          <h3 class="main-info-form__subtitle">{{ 'PROTECT.UPLOAD_TITLE' | translate }}</h3>
+          <file-uploader
+            [placeholder]="'INPUT_NAME.FILE_UPLOAD' | translate"
+            [previewHeight]="80"
+            [multiple]="false"
+            [maxSizeFile]="2"
+            [actionsXPosition]="'end'"
+            [actionsYPosition]="'center'"
+            class="main-info-form__field"
+            [control]="form?.document"
+          ></file-uploader>
+        </div>
+      </section>
+    </div>
+  </loader-container>
+</form>

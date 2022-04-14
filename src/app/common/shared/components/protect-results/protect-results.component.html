@@ -1,0 +1,25 @@
+<section class="main__protect-results">
+  <p *ngIf="showText">{{ 'HOME.PROTECT_RESULT_TEXT' | translate }}</p>
+
+  <div class="main__protect-result-card">
+    <div class="main__qrcode">
+      <qr-code [value]="ID"></qr-code>
+    </div>
+    <div class="main__protect-result-info">
+      <button class="download" mat-icon-button matSuffix tabindex="-1" type="button">
+        <mat-icon svgIcon="download"></mat-icon>
+      </button>
+      <button class="copy" mat-icon-button matSuffix tabindex="-1" type="button" [cdkCopyToClipboard]="ID">
+        <mat-icon svgIcon="copy"></mat-icon>
+      </button>
+      <h3>
+        {{ 'HOME.PROTECT_RESULT_TITLE' | translate }}
+      </h3>
+      {{ 'HOME.PROTECT_RESULT_DESC' | translate }}
+    </div>
+    <div class="main__protect-result-id">
+      <h3>{{ 'HOME.PROTECT_RESULT_SUBTITLE' | translate }}</h3>
+      <cropped-text [text]="ID"></cropped-text>
+    </div>
+  </div>
+</section>

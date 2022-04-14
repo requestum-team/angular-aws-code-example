@@ -1,0 +1,24 @@
+<div class="search">
+  <div class="search__input">
+    <base-form-input
+      [control]="searchControl"
+      [inputType]="InputType.text"
+      [placeholder]="'INPUT_NAME.SEARCH' | translate"
+      autocomplete="off"
+      class="search__input-element"
+      [matAutocomplete]="auto"
+      [showClear]="true"
+      (clear)="onClear(searchControl)"
+      [icon]="'search'"
+    ></base-form-input>
+
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="selectOption($event)">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+  <button class="search__button" color="primary" mat-flat-button (click)="btnClick()">
+    {{ 'BUTTON_NAME.SEARCH' | translate }}
+  </button>
+</div>

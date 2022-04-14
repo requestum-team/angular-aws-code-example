@@ -1,0 +1,44 @@
+.option-item {
+  display: flex;
+
+  &__organisation {
+    color: var(--color-wireframe-2);
+    font-size: 1.4rem;
+  }
+
+  &__img {
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+    background-size: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+
+    img {
+      max-width: 100%;
+    }
+
+    &_avatar {
+      border-radius: 50%;
+    }
+  }
+
+  &__noimg {
+    width: 2.4rem;
+    height: 2.4rem;
+    color: var(--color-wireframe-4);
+    flex-shrink: 0;
+    border-radius: 50%;
+  }
+}
+
+.dialog {
+  &__radio-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__radio-button {
+    margin-bottom: 2rem;
+  }
+}

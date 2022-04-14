@@ -1,0 +1,144 @@
+@import "variables/modules/breakpoints";
+
+.main {
+  &__section {
+    background: var(--color-white);
+    padding: 3rem;
+    margin: 0 -1.5rem;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-family: var(--ff-title-font);
+    line-height: 1.5;
+    font-weight: var(--fw-bold);
+  }
+
+  &__values {
+    display: flex;
+    flex-direction: column;
+    font-weight: var(--fw-medium);
+    color: var(--color-wireframe-3);
+
+    .main__section {
+      flex-grow: 1;
+
+      &:first-child {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  .mb-2 {
+    margin-bottom: 2rem;
+  }
+
+  padding-bottom: 5rem;
+
+  .wrapper {
+    max-width: 60rem;
+  }
+
+  &__content {
+    margin: 0 -1.5rem 2rem;
+  }
+
+  &__personal {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3rem;
+    max-width: 60%;
+  }
+
+  &__personal-name {
+    font-family: var(--ff-title-font);
+    font-size: 1.8rem;
+    font-weight: var(--fw-bold);
+    margin: 0 0 0.8rem;
+    line-height: 1.5;
+  }
+
+  &__personal-email {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: var(--color-wireframe-3);
+  }
+
+  &__avatar-wrap {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__subtitle {
+    font-weight: var(--fw-bold);
+    font-size: 1.6rem;
+    font-family: var(--ff-title-font);
+    margin: 0 0 2rem;
+    color: var(--color-wireframe-1);
+  }
+
+  .photo-menu {
+    &__logo-default {
+      width: 9rem;
+      height: 9rem;
+      object-fit: cover;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-title-font);
+      font-size: 3.5rem;
+      text-transform: uppercase;
+      font-weight: var(--fw-medium);
+      color: var(--color-white);
+      position: relative;
+      z-index: 1;
+
+      &_avatar {
+        border-radius: 100%;
+      }
+    }
+  }
+
+  @media (min-width: $tablet-s) {
+    &__section {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    &__values {
+      flex-direction: row;
+
+      .main__section {
+        &:first-child {
+          margin-right: 1rem;
+          margin-bottom: 0;
+        }
+
+        &:last-child {
+          margin-left: 1rem;
+          margin-top: 2rem;
+        }
+      }
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    background-size: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+
+    img {
+      max-width: 100%;
+    }
+
+    &_avatar {
+      border-radius: 50%;
+    }
+  }
+}

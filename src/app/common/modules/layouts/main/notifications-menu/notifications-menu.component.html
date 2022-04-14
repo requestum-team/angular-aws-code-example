@@ -1,0 +1,42 @@
+<dropdown
+  [isTranslateY]="true"
+  [disablePadding]="true"
+  [menuCustomTemplate]="customMenuTemplate"
+  class="notifications-menu mat-elevation-z0"
+  panelClass="notifications-menu-panel"
+>
+  <div class="notifications-menu__wrapper">
+    <mat-icon [svgIcon]="'notifications'"></mat-icon>
+    <span class="notifications-menu__number">1</span>
+  </div>
+</dropdown>
+
+<ng-template #customMenuTemplate>
+  <div class="notifications-menu__list">
+    <div class="notifications-menu__header">
+      <span class="notifications-menu__title">{{ 'PAGE_NAME.NOTIFICATIONS' | translate }}</span>
+      <a class="notifications-menu__link" href="#">{{ 'NOTIFICATIONS.MARK_AS_READ' | translate }}</a>
+    </div>
+    <div class="notifications-menu__content">
+      <ng-container *ngFor="let item of notifications">
+        <div class="notifications-menu__item" [ngClass]="{ 'notifications__item-unread': item.read }">
+          <div class="notifications-menu__message">
+            <ng-container [ngSwitch]="item.type">
+              <ng-container *ngSwitchCase="notificationsType.fileAccess">
+                {{ 'NOTIFICATION_TYPES.FILE_ACCESS' | translate: { id: item.fileId } }}
+              </ng-container>
+              <ng-container *ngSwitchCase="notificationsType.newEntry">
+                {{ 'NOTIFICATION_TYPES.NEW_ENTRY' | translate: { name: item.name } }}
+              </ng-container>
+            </ng-container>
+          </div>
+          <div class="notifications-menu__date">
+            {{ item.date | date: 'medium' }}
+          </div>
+          <mat-icon class="notifications-menu__close" [svgIcon]="'cross'" (click)="remove(item.id)"></mat-icon>
+        </div>
+      </ng-container>
+      <a class="notifications-menu__view-all" routerLink="/notifications">{{ 'NOTIFICATIONS.VIEW_ALL' | translate }}</a>
+    </div>
+  </div>
+</ng-template>

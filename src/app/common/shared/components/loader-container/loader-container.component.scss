@@ -1,0 +1,71 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.loader-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 19.1rem;
+  margin-top: 1rem;
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: var(--fw-medium);
+    font-family: var(--ff-title-font);
+    margin: 0 0 1.5rem;
+  }
+
+  &__description {
+    color: var(--color-wireframe-3);
+    margin: 0 0 2rem;
+  }
+
+  &.is-loading {
+    background: var(--color-white);
+
+    ::ng-deep * {
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+  &__loader,
+  &__content {
+    transition-property: opacity;
+    transition-duration: 0.3s;
+  }
+
+  &__loader {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    padding: 3rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1001;
+  }
+
+  &.is-loading &__loader {
+    opacity: 1;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  &.is-loading &__content {
+    opacity: 0;
+  }
+}

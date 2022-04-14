@@ -1,0 +1,83 @@
+.photo-menu {
+  &::ng-deep {
+    .mat-fab {
+      &.mat-accent {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &__logo {
+    display: flex;
+    position: relative;
+  }
+
+  &__logo-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(var(--value-black), 0.4);
+    border-radius: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+  }
+
+  ::ng-deep .hovered &__logo-overlay,
+  &__logo:hover &__logo-overlay {
+    opacity: 1;
+  }
+
+  &__logo-image {
+    width: 9rem;
+    height: 9rem;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+
+  &__logo-icon {
+    width: 3.6rem;
+    height: 3rem;
+  }
+
+  &__item {
+    display: flex;
+    font-size: 1.6rem;
+    align-items: center;
+    line-height: 1.5;
+    color: var(--color-wireframe-1);
+    min-width: 14rem;
+    padding: 0.7em 2rem 0.7em 1rem;
+    text-decoration: none;
+
+    &:hover {
+      background: var(--color-wireframe-hover);
+    }
+  }
+
+  &__item-text {
+    .active & {
+      font-weight: var(--fw-medium);
+    }
+  }
+}
+
+::ng-deep {
+  .photo-menu {
+    .dropdown {
+      line-height: 4rem;
+    }
+
+    .dropdown__title {
+      .dropdown__icon-wrap {
+        margin-right: 0;
+      }
+    }
+  }
+}

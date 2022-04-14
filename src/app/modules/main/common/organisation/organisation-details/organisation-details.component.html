@@ -1,0 +1,53 @@
+<ng-template #toolbarTemplate></ng-template>
+<div class="main">
+  <div class="main__form-wrap">
+    <section class="main__content main__section">
+      <div class="wrapper">
+        <div class="main__avatar-wrap">
+          <figure class="photo-menu__logo">
+            <img
+              class="photo-menu__logo-default photo-menu__logo-default_avatar"
+              src="/assets/img/jpg/default-avatar.jpg"
+              [alt]="organization?.name"
+            />
+          </figure>
+          <div class="main__personal">
+            <div class="main__personal-name">{{ organization?.name }}</div>
+            <cropped-text [text]="organization?.primaryContact.email" class="main__personal-email"></cropped-text>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="main__section mb-2">
+      <h2 class="main__title">{{ 'ORGANIZATION.ADMINISTRATORS_TITLE' | translate }}</h2>
+    </section>
+    <items-list [showSearch]="false" [columns]="usersColumns" [initialData]="users"></items-list>
+    <section class="main__values mb-2">
+      <div class="main__section">
+        <h3 class="main__subtitle">{{ 'ORGANIZATION.SHARING_TITLE' | translate }}</h3>
+        {{ 'ORGANISATION_SHARING.' + organization.sharingDefault | uppercase | translate }}
+      </div>
+      <div class="main__section">
+        <h3 class="main__subtitle">{{ 'ORGANIZATION.VAULT_TITLE' | translate }}</h3>
+        {{ 'ORGANIZATION.VAULT_VALUE' | translate }}
+      </div>
+    </section>
+    <section class="main__section mb-2">
+      <h2 class="main__title">{{ 'PROFILE.ORGANIZATION_PARTNERS' | translate }}</h2>
+    </section>
+    <items-list
+      [showSearch]="false"
+      [columns]="partnersColumns"
+      [initialData]="organizations"
+      [onRowClick]="onOrganizationClick.bind(this)"
+    ></items-list>
+  </div>
+</div>
+
+<ng-template #avatarTemplate let-value let-item="item">
+  <img class="photo-menu__logo-default" src="/assets/img/jpg/default-avatar.jpg" [alt]="item?.fullName" />
+</ng-template>
+
+<ng-template #logoTemplate let-value let-item="item">
+  <img class="photo-menu__logo-default" src="/assets/img/jpg/default-avatar.jpg" [alt]="item?.name" />
+</ng-template>

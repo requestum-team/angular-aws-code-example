@@ -1,0 +1,36 @@
+@import "variables/modules/breakpoints";
+
+.logo {
+  display: none;
+
+  img {
+    width: 100%;
+  }
+
+  @media (min-width: $tablet-s) {
+    width: 2.2rem;
+    height: 2.2rem;
+    display: block;
+
+    &__image {
+      display: none;
+    }
+
+    &__image_small {
+      display: block;
+    }
+  }
+
+  @media (min-width: $tablet-l) {
+    width: 10.4rem;
+    height: 2.2rem;
+
+    &__image {
+      display: block;
+    }
+
+    &__image_small {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<section class="main-info-form__fields main-info-form__section">
+  <div class="main-info-form__section-wrapper">
+    <h3 class="main-info-form__subtitle">{{ 'PROTECT.INFO_TITLE' | translate }}</h3>
+    <div class="main-info-form__row">
+      <div class="main-info-form__col">
+        <div class="main-info-form__col-title">{{ 'INPUT_NAME.STUDENT_ID' | translate }}</div>
+        {{ document?.subjectId }}
+      </div>
+      <div class="main-info-form__col">
+        <div class="main-info-form__col-title">{{ 'SELECT_NAME.ORGANIZATION' | translate }}</div>
+        {{ documentOrganization?.name }}
+      </div>
+      <div class="main-info-form__col">
+        <div class="main-info-form__col-title">{{ 'PROTECT.FILE_NAME' | translate }}</div>
+        {{ file?.name }}
+      </div>
+      <div class="main-info-form__col">
+        <div class="main-info-form__col-title">{{ 'INPUT_NAME.DATE' | translate }}</div>
+        {{ document?.doi | date: DATE_FORMAT.DMY }}
+      </div>
+    </div>
+
+    <div class="main-info-form__row cropped">
+      <div class="main-info-form__col cropped">
+        <div class="main-info-form__col-title">{{ 'PROTECT.BLOC_ID' | translate }}</div>
+        <div class="txt">
+          <div class="txt__cropped">
+            <cropped-text [text]="document.txId"></cropped-text>
+          </div>
+          <button mat-icon-button matSuffix tabindex="-1" type="button" [cdkCopyToClipboard]="document.txId">
+            <mat-icon svgIcon="copy"></mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="main-info-form__col">
+        <div class="main-info-form__col-title">{{ 'PROTECT.RECORD_SHARING_TITLE' | translate }}</div>
+        {{ sharingName(document?.releasability) }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<protect-results [ID]="document.txId"></protect-results>

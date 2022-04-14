@@ -1,0 +1,101 @@
+<ng-template #toolbarTemplate>
+  <div class="main__controls main__controls-desktop">
+    <button (click)="submitForm()" class="main__button" color="primary" mat-flat-button type="submit">
+      {{ 'BUTTON_NAME.SAVE' | translate }}
+    </button>
+    <button (click)="cancel()" class="main__button" color="primary" mat-stroked-button>
+      {{ 'BUTTON_NAME.CANCEL' | translate }}
+    </button>
+  </div>
+</ng-template>
+<div class="main">
+  <div class="main__form-wrap">
+    <main-info-form #editForm></main-info-form>
+    <section class="main__organizations">
+      <div class="profile-organizations">
+        <mat-tab-group mat-align-tabs="start" class="organizations organizations-edit">
+          <mat-tab [label]="'PROFILE.ORGANIZATION_PARTNERS' | translate">
+            <items-list
+              (actionEvent)="addPartnerOrganization($event)"
+              [initialData]="partnerOrganisations"
+              [data]="organizations"
+              [columns]="partnersColumns"
+              [btnIcon]="'add'"
+              [onRowClick]="onOrganizationClick.bind(this)"
+            ></items-list>
+          </mat-tab>
+          <mat-tab [label]="'PROFILE.ORGANIZATION_USERS' | translate">
+            <items-list [columns]="usersColumns" [data]="requests" [initialData]="requests"></items-list>
+            <ng-template #searchTemplate>
+              <user-search (actionEvent)="addPartnerUser($event)" [data]="users"></user-search>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </section>
+
+    <div class="main__controls">
+      <button (click)="submitForm()" class="main__button" color="primary" mat-flat-button type="submit">
+        {{ 'BUTTON_NAME.SAVE' | translate }}
+      </button>
+      <button (click)="cancel()" class="main__button" color="primary" mat-stroked-button>
+        {{ 'BUTTON_NAME.CANCEL' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #avatarTemplate let-value let-item="item">
+  <img class="organization__img" [src]="null" [alt]="item?.fullName" />
+</ng-template>
+
+<ng-template #logoTemplate let-value let-item="item">
+  <img class="organization__img" [src]="null" [alt]="item?.name" />
+</ng-template>
+
+<ng-template #statusTemplate let-value>
+  <ng-container [ngSwitch]="value">
+    <mat-icon *ngSwitchCase="'approved'" class="organization__icon organization__icon_approved" svgIcon="check"></mat-icon>
+    <mat-icon *ngSwitchCase="'declined'" class="organization__icon organization__icon_canceled" svgIcon="cross"></mat-icon>
+    <mat-icon *ngSwitchCase="'pending'" class="organization__icon organization__icon_pending" svgIcon="time"></mat-icon>
+    {{ value ? value : '-' }}
+  </ng-container>
+</ng-template>
+
+<ng-template #deleteTemplate let-value let-item="item">
+  <div class="organization__del">
+    <mat-icon
+      (click)="$event.stopPropagation(); deleteRequest(item)"
+      *ngIf="item.status !== 'pending'; else pendingControl"
+      svgIcon="delete"
+    ></mat-icon>
+    <ng-template #pendingControl>
+      <div class="pending-control">
+        <span (click)="$event.stopPropagation(); acceptAction(item)">{{ 'PENDING_MENU.ACCEPT' | translate }}</span>
+        <span (click)="$event.stopPropagation(); rejectAction(item)">{{ 'PENDING_MENU.REJECT' | translate }}</span>
+      </div>
+      <dropdown
+        panelClass="pending-menu-panel"
+        [displayArrow]="false"
+        [items]="dropdownItems.get(item)"
+        [disablePadding]="true"
+        class="pending-menu"
+      >
+        <mat-icon svgIcon="more"></mat-icon>
+      </dropdown>
+    </ng-template>
+  </div>
+</ng-template>
+<ng-template #deletePartnerTemplate let-value let-item="item">
+  <div class="organization__del">
+    <mat-icon (click)="$event.stopPropagation(); deleteOrganisation(item)" *ngIf="!value" svgIcon="delete"></mat-icon>
+  </div>
+</ng-template>
+
+<ng-template #dropdownPendingItemTemplate let-item>
+  <ng-container *ngIf="toPendingMenuItemType(item) as item">
+    <div (click)="$event.stopPropagation(); item.action()" *ngIf="item.action" class="pending-menu__item">
+      <span class="pending-menu__item-text">{{ item.title | translate }}</span>
+    </div>
+  </ng-container>
+</ng-template>

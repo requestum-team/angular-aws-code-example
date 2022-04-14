@@ -1,0 +1,10 @@
+<div class="toolbar" [class.toolbar_hidden]="isHidden">
+  <div class="toolbar__info">
+    <h1 class="toolbar__page-name" *ngIf="pageName">{{ pageName | translate }}</h1>
+    <p class="toolbar__hint" *ngIf="hint">{{ hint | translate }}</p>
+  </div>
+  <div class="toolbar__content" *ngIf="template">
+    <ng-container *ngTemplateOutlet="template ? template : defaultItemTemplate; context: { $implicit: templateData }"></ng-container>
+  </div>
+</div>
+<ng-template #defaultItemTemplate></ng-template>

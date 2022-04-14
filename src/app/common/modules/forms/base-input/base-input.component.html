@@ -1,0 +1,68 @@
+<label>
+  <mat-form-field [appearance]="appearance">
+    <mat-label *ngIf="placeholder">{{ placeholder }}</mat-label>
+    <mat-icon matPrefix *ngIf="icon" [svgIcon]="icon"></mat-icon>
+    <input
+      *ngIf="!matAutocomplete"
+      matInput
+      [maxLength]="maxLength"
+      [type]="type"
+      [formControl]="formControl"
+      [placeholder]="placeholder"
+      [required]="required"
+      [readonly]="readonly"
+      [autocomplete]="autocomplete"
+      (keydown.enter)="onEnter($event)"
+    />
+
+    <input
+      *ngIf="matAutocomplete"
+      matInput
+      [maxLength]="maxLength"
+      [type]="type"
+      [formControl]="formControl"
+      [placeholder]="placeholder"
+      [required]="required"
+      [readonly]="readonly"
+      [autocomplete]="autocomplete"
+      (keydown.enter)="onEnter($event)"
+      [matAutocomplete]="matAutocomplete"
+    />
+
+    <button *ngIf="isPasswordInput" [disabled]="disabled" mat-icon-button matSuffix tabindex="-1" type="button" (click)="togglePassword()">
+      <mat-icon [svgIcon]="buttonIcon"></mat-icon>
+    </button>
+
+    <button
+      *ngIf="isSearchInput"
+      [disabled]="disabled"
+      mat-icon-button
+      matSuffix
+      tabindex="-1"
+      type="button"
+      (click)="search.emit(formControl.value)"
+    >
+      <mat-icon svgIcon="search"></mat-icon>
+    </button>
+
+    <button *ngIf="showClear && control.value" mat-icon-button matSuffix tabindex="-1" type="button" (click)="clearInput($event)">
+      <mat-icon svgIcon="cross"></mat-icon>
+    </button>
+
+    <button
+      *ngIf="showCopy"
+      mat-icon-button
+      matSuffix
+      tabindex="-1"
+      type="button"
+      [cdkCopyToClipboard]="control.value"
+      (cdkCopyToClipboardCopied)="showCopyNotification()"
+    >
+      <mat-icon svgIcon="copy"></mat-icon>
+    </button>
+
+    <mat-hint *ngIf="hint || (maxLength && shouldShowCount)">{{ hint }}</mat-hint>
+    <mat-hint class="count" *ngIf="maxLength && shouldShowCount">{{ control.value?.length ?? 0 }} / {{ maxLength }}</mat-hint>
+    <mat-error *ngIf="control?.invalid && errorMessage">{{ errorMessage }}</mat-error>
+  </mat-form-field>
+</label>

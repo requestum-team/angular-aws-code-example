@@ -1,0 +1,127 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+@import "variables/modules/breakpoints";
+
+@mixin color($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, "primary");
+  $primary-color: mat.get-color-from-palette($primary-palette, 500);
+}
+
+@mixin typography($theme) {
+  $typography-config: mat.get-typography-config($theme);
+  $font-family: mat.font-family($typography-config);
+}
+
+@mixin theme($theme) {
+  $color-config: mat.get-color-config($theme);
+
+  @if $color-config != null {
+    @include color($theme);
+  }
+
+  $typography-config: mat.get-typography-config($theme);
+
+  @if $typography-config != null {
+    @include typography($theme);
+  }
+
+  .mat-datepicker-content-touch {
+    width: 100vw;
+    height: 100vh;
+    flex-grow: 1;
+    max-height: none !important; // stylelint-disable-line
+
+    .mat-datepicker-content-container {
+      margin: 0 auto;
+      max-width: 446px !important; // stylelint-disable-line
+      min-width: 345px !important; // stylelint-disable-line
+    }
+
+    .mat-calendar-body {
+      font-size: 1.6rem;
+    }
+
+    .mat-calendar-period-button {
+      font-size: 1.8rem;
+      font-weight: var(--fw-semi-bold);
+    }
+
+    .mat-calendar-body-cell-content {
+      border-radius: 4px;
+
+      &:focus {
+        background: var(--color-orange);
+      }
+
+      &.mat-calendar-body-selected {
+        border-color: transparent;
+        background: var(--color-orange);
+      }
+    }
+
+    .mat-datepicker-actions {
+      flex-direction: column;
+
+      .mat-flat-button,
+      .mat-stroked-button {
+        width: 100%;
+        font-size: 1.6rem;
+      }
+
+      .mat-stroked-button {
+        margin: 1rem 0 0;
+      }
+
+      .mat-button-base + .mat-button-base {
+        margin-left: 0;
+      }
+
+      .mat-calendar-body-today {
+        border-radius: 4px;
+      }
+    }
+
+    .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+      border: 0;
+    }
+
+    .mat-datepicker-content-container-with-actions {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    @media (min-width: $tablet-s) {
+      height: auto;
+      width: auto;
+
+      .mat-datepicker-content-container {
+        margin: 0 auto;
+        min-height: auto;
+      }
+
+      .mat-calendar-period-button {
+        font-size: 2.4rem;
+      }
+
+      .mat-datepicker-content-container-with-actions {
+        height: auto !important; // stylelint-disable-line
+      }
+
+      .mat-datepicker-actions {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 3rem;
+
+        .mat-flat-button,
+        .mat-stroked-button {
+          max-width: 15rem;
+        }
+
+        .mat-stroked-button {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

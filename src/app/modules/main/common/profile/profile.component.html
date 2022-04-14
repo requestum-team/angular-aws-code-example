@@ -1,0 +1,71 @@
+<ng-template #toolbarTemplate>
+  <button class="main__icon-button" mat-icon-button (click)="logout()">
+    <mat-icon class="main__icon" svgIcon="logout"></mat-icon>
+  </button>
+</ng-template>
+<div class="main">
+  <main-info-form class="main__form-wrap"></main-info-form>
+  <div class="profile-organizations mobile-mg">
+    <h1 class="profile-organizations__title mobile-pd">{{ 'PROFILE.ORGANIZATION_TITLE' | translate }}</h1>
+    <mat-tab-group mat-align-tabs="start" class="organizations">
+      <mat-tab [label]="'PROFILE.ORGANIZATION_YOURS' | translate">
+        <items-list
+          [searchField]="'organisation.name'"
+          [customTableClass]="'requests'"
+          [initialData]="requests"
+          [data]="requests"
+          [columns]="requestsColumns"
+          [onRowClick]="onOrganizationClick.bind(this)"
+        ></items-list>
+      </mat-tab>
+      <mat-tab [label]="'PROFILE.ORGANIZATION_JOIN' | translate">
+        <items-list
+          [customTableClass]="'organizations-join'"
+          [initialData]="organizations"
+          [data]="organizations"
+          [columns]="organizationsColumns"
+          [onRowClick]="onOrganizationClick.bind(this)"
+        ></items-list>
+
+        <ng-template #requestTemplate let-value let-item="item">
+          <button
+            (click)="$event.stopPropagation(); requestToJoin(item)"
+            mat-button
+            [disabled]="!value"
+            [matTooltip]="!value ? ('PROFILE.ORGANIZATION_TOOLTIP_REQUEST' | translate) : null"
+            matTooltipClass="custom-tooltip"
+            matTooltipPosition="above"
+            class="profile-organizations__link"
+          >
+            {{ 'PROFILE.ORGANIZATION_' + (value ? 'JOIN_REQUEST' : 'CANNOT_JOIN') | translate }}
+          </button>
+        </ng-template>
+
+        <ng-template #statusTemplate let-value>
+          <ng-container [ngSwitch]="value">
+            <mat-icon *ngSwitchCase="'approved'" class="organization__icon organization__icon_approved" [svgIcon]="'check'"></mat-icon>
+            <mat-icon *ngSwitchCase="'declined'" class="organization__icon organization__icon_canceled" [svgIcon]="'cross'"></mat-icon>
+            <mat-icon *ngSwitchCase="'pending'" class="organization__icon organization__icon_pending" [svgIcon]="'time'"></mat-icon>
+            {{ value }}
+          </ng-container>
+        </ng-template>
+
+        <ng-template #imgTemplate let-value let-item="item">
+          <img class="organization__img" src="/assets/img/jpg/default-avatar.jpg" [alt]="item.name" />
+        </ng-template>
+
+        <ng-template #deleteTemplate let-item="item">
+          <button
+            class="organization__del"
+            *ngIf="myOrganisation?.id !== item?.organisation?.id; else delEmpty"
+            mat-icon-button
+            (click)="$event.stopPropagation(); removeRequest(item)"
+          >
+            <mat-icon svgIcon="delete"></mat-icon>
+          </button>
+          <ng-template #delEmpty><div class="organization__del"></div></ng-template>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

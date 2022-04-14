@@ -1,0 +1,134 @@
+@import "variables/modules/breakpoints";
+
+.main-info-form {
+  &__toggle {
+    display: flex;
+    color: var(--color-wireframe-4);
+  }
+
+  .wrapper {
+    max-width: 60rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  &__subtitle {
+    font-weight: var(--fw-normal);
+    margin: 1rem 0;
+
+    &.main-info-form__subtitle_file {
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__section {
+    background: var(--color-white);
+    padding: 3rem 1.5rem;
+    margin: 2rem -1.5rem 0;
+  }
+
+  &__section-wrapper {
+    max-width: 80rem;
+  }
+
+  &__input {
+    @media (min-width: $tablet-s) {
+      flex-grow: 1;
+    }
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    max-width: 60rem;
+  }
+
+  &__col {
+    &.main-info-form__col-toggle {
+      max-width: 20rem;
+      display: flex;
+      align-items: center;
+      margin: 1rem 0 3rem;
+    }
+  }
+
+  .organization-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--color-white);
+
+    &__input {
+      flex-shrink: 1;
+      width: 100%;
+    }
+
+    &__button {
+      &.mat-button {
+        background: var(--color-light-blue);
+        flex-shrink: 0;
+        border-radius: 4px;
+        width: 4.4rem;
+        height: 4.4rem;
+        color: var(--color-white);
+        padding: 0;
+        min-width: auto;
+        margin-left: 2rem;
+      }
+    }
+  }
+
+  @media (min-width: $tablet-s) {
+    &__row {
+      flex-direction: row;
+      column-gap: 2rem;
+
+      &.main-info-form__row-wide {
+        flex-direction: column;
+        column-gap: 0;
+
+        max-width: 60rem;
+      }
+    }
+
+    &__col {
+      flex-grow: 1;
+
+      &.main-info-form__col-toggle {
+        max-width: 20rem;
+      }
+    }
+
+    &__section {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .btn {
+      width: auto;
+    }
+  }
+
+  @media (min-width: $desktop-s) {
+    &__col {
+      &.main-info-form__col-organisation {
+        width: 60rem;
+        flex-grow: 0;
+      }
+
+      &.main-info-form__col-toggle {
+        margin: 0;
+      }
+    }
+
+    &__row {
+      &.main-info-form__row-wide {
+        flex-direction: row;
+        column-gap: 2rem;
+        max-width: 80rem;
+      }
+    }
+  }
+}

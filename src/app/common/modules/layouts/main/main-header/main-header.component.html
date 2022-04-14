@@ -1,0 +1,13 @@
+<header class="main-header">
+  <div class="main-header__inner">
+    <mat-icon class="main-header__icon" [svgIcon]="'menu'" (click)="toggleNav()"></mat-icon>
+    <a routerLink="/home" class="main-header__logo">
+      <img alt="Logo" class="main-header__logo-img" src="/assets/img/svg/smile.svg" />
+    </a>
+    <div class="main-header__btns">
+      <notifications-menu></notifications-menu>
+
+      <profile-menu class="main-header__menu"></profile-menu>
+    </div>
+  </div>
+</header>

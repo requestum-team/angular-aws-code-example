@@ -1,0 +1,49 @@
+@import "variables/modules/breakpoints";
+
+.main {
+  &__controls {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    margin-top: 2rem;
+
+    .main__button {
+      min-width: 15rem;
+    }
+
+    &.main__controls-desktop {
+      display: none;
+    }
+  }
+
+  @media (min-width: $mobile-m) {
+    &__controls {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      margin-bottom: 2rem;
+
+      .main__button {
+        &:first-child {
+          margin-right: 2rem;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $tablet-l) {
+    &__controls {
+      &:not(.main__controls-desktop) {
+        display: none;
+      }
+
+      &.main__controls-desktop {
+        display: flex;
+
+        .mat-button {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}

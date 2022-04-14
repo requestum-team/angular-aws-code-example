@@ -1,0 +1,79 @@
+<form [formGroup]="formGroup" class="main-info-form" (ngSubmit)="onSubmit()">
+  <div class="main-info-form__content">
+    <section class="main-info-form__fields main-info-form__section">
+      <div class="main-info-form__section-wrapper">
+        <h3 class="main-info-form__subtitle">{{ 'SEARCH.INFO_TITLE' | translate }}</h3>
+        <div class="main-info-form__row">
+          <div class="main-info-form__col">
+            <base-form-input
+              class="main-info-form__field"
+              [control]="form?.subjectId"
+              [placeholder]="'INPUT_NAME.STUDENT_ID' | translate"
+            ></base-form-input>
+          </div>
+          <div class="main-info-form__col">
+            <base-datepicker
+              class="main-info-form__field"
+              [control]="form?.doi"
+              [placeholder]="'INPUT_NAME.DATE' | translate"
+            ></base-datepicker>
+          </div>
+        </div>
+
+        <div class="main-info-form__row main-info-form__row-wide">
+          <div class="main-info-form__col main-info-form__col-organisation">
+            <div class="organization-search">
+              <base-form-input
+                [control]="form?.organization"
+                [inputType]="InputType.text"
+                [placeholder]="'INPUT_NAME.RECORD_ORGANISATION' | translate"
+                autocomplete="off"
+                class="organization-search__input"
+                [matAutocomplete]="auto"
+                [showClear]="true"
+                (clear)="onClear()"
+                #autocompleteInput
+              ></base-form-input>
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="getOptionText.bind(this)">
+                <mat-option *ngFor="let option of filteredOptions$ | async" [value]="option">
+                  {{ option.name }}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+          </div>
+          <div class="main-info-form__col main-info-form__col-toggle">
+            <div class="main-info-form__toggle">
+              <mat-slide-toggle color="accent" [checked]="showOnlyMyOrganisations" labelPosition="before" (change)="onToggleChange($event)">
+                {{ 'SEARCH.TOGGLE_TITLE' | translate }}
+              </mat-slide-toggle>
+            </div>
+          </div>
+        </div>
+
+        <div class="wrapper">
+          <h3 class="main-info-form__subtitle">{{ 'SEARCH.BLOCED_TITLE' | translate }}</h3>
+          <base-textarea
+            class="main__textarea"
+            [minRows]="5"
+            [control]="form?.id"
+            [placeholder]="'INPUT_NAME.BLOCKED_ID' | translate"
+            [isCopyingAvailable]="true"
+          ></base-textarea>
+          <h3 class="main-info-form__subtitle main-info-form__subtitle_file">{{ 'SEARCH.FILE_TITLE' | translate }}</h3>
+          <file-uploader
+            [placeholder]="'INPUT_NAME.FILE_UPLOAD' | translate"
+            [previewHeight]="80"
+            [multiple]="false"
+            [maxSizeFile]="2"
+            [actionsXPosition]="'end'"
+            [actionsYPosition]="'center'"
+            class="main-info-form__field"
+            [control]="form?.document"
+          ></file-uploader>
+        </div>
+
+        <button mat-flat-button [disabled]="true" class="btn btn_toolbar" color="primary">{{ 'BUTTON_NAME.SEARCH' | translate }}</button>
+      </div>
+    </section>
+  </div>
+</form>

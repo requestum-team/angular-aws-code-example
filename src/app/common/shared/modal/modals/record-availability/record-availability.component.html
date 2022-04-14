@@ -1,0 +1,14 @@
+<form [formGroup]="formGroup" class="dialog__share-content" (ngSubmit)="onSubmit()">
+  <mat-radio-group formControlName="shareType" class="dialog__radio-group">
+    <mat-radio-button class="dialog__radio-button" [value]="organisationSharing.open">
+      {{ 'ORGANISATION_SHARING.OPEN' | translate }}
+    </mat-radio-button>
+    <mat-radio-button class="dialog__radio-button" [value]="organisationSharing.internal">
+      {{ 'ORGANISATION_SHARING.INTERNAL' | translate }}
+    </mat-radio-button>
+    <mat-radio-button class="dialog__radio-button" [value]="organisationSharing.partner">
+      {{ 'ORGANISATION_SHARING.PARTNER' | translate }}
+    </mat-radio-button>
+  </mat-radio-group>
+  <modal-actions [actions]="actions"></modal-actions>
+</form>

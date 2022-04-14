@@ -1,0 +1,107 @@
+@import "variables/modules/breakpoints";
+
+.notifications-menu {
+  &__wrapper {
+    position: relative;
+    color: var(--color-wireframe-4);
+    display: flex;
+    align-items: center;
+  }
+
+  &__close {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 1.8rem;
+    color: var(--color-wireframe-4);
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+  }
+
+  &__number {
+    position: absolute;
+    top: 0;
+    right: -0.3rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    font-size: 1rem;
+    border-radius: 50%;
+    background: var(--color-orange);
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+
+    border-bottom: 1px solid var(--color-wireframe-6);
+  }
+
+  &__message {
+    line-height: 1.5;
+  }
+
+  &__title {
+    font-weight: var(--fw-bold);
+    color: var(--color-wireframe-1);
+  }
+
+  &__link {
+    font-weight: var(--fw-normal);
+  }
+
+  &__content {
+    background: var(--color-white);
+    margin: 0;
+  }
+
+  &__item {
+    padding: 1.5rem 2rem 1.3rem;
+    border-bottom: 1px solid var(--color-wireframe-5);
+    color: var(--color-wireframe-1);
+    position: relative;
+    padding-right: 6rem;
+
+    &.notifications__item-unread {
+      border-left: 0.2rem solid var(--color-light-blue);
+    }
+  }
+
+  &__date {
+    font-size: 1.4rem;
+    color: var(--color-wireframe-3);
+    margin-top: 0.8rem;
+  }
+
+  &__view-all {
+    display: block;
+    padding: 2rem;
+    text-align: center;
+  }
+}
+
+::ng-deep {
+  .notifications-menu {
+    .dropdown {
+      line-height: 4rem;
+    }
+
+    .dropdown__title {
+      .dropdown__icon-wrap {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .notifications-menu-panel {
+    border-radius: 0;
+    width: 28rem;
+    box-shadow: 0 0 20px rgb(217 221 231 / 60%);
+  }
+}

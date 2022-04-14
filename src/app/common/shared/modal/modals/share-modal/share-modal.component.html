@@ -1,0 +1,28 @@
+<form [formGroup]="formGroup" class="dialog__change-password-content" (ngSubmit)="onSubmit()">
+  <multiselect-autocomplete
+    [placeholder]="'INPUT_NAME.EMAIL_OR_USER' | translate"
+    key="options"
+    [data]="users"
+    [searchFields]="searchFields"
+    [displaySearchField]="'fullName'"
+    (selectChange)="selectChange($event)"
+    [optionTemplate]="optionTemplate"
+  ></multiselect-autocomplete>
+  <modal-actions [actions]="actions"></modal-actions>
+</form>
+<ng-template #optionTemplate let-item>
+  <div class="option-item">
+    <div
+      *ngIf="item.avatar; else noImage"
+      class="option-item__img option-item__img_avatar"
+      [style.background-image]="'url(' + item.avatar + ')'"
+    ></div>
+    <ng-template #noImage>
+      <mat-icon class="option-item__noimg" svgIcon="image"></mat-icon>
+    </ng-template>
+    <div class="option-item__title">
+      {{ item.fullName }}
+      <div class="option-item__organisation">{{ item.organisation?.name }}</div>
+    </div>
+  </div>
+</ng-template>

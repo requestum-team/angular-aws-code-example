@@ -1,0 +1,11 @@
+<ng-template #toolbarTemplate></ng-template>
+<div class="main">
+  <mat-tab-group mat-align-tabs="start" class="organizations mobile-borders">
+    <mat-tab [label]="'HOME.QUICK_VERIFICATION' | translate">
+      <quick-verification></quick-verification>
+    </mat-tab>
+    <mat-tab [label]="'HOME.QUICK_PROTECTION' | translate">
+      <quick-protection></quick-protection>
+    </mat-tab>
+  </mat-tab-group>
+</div>

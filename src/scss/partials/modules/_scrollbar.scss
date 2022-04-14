@@ -1,0 +1,31 @@
+* {
+  --mozilla-scrollbar-colors: rgba(var(--value-blue), 0.5) transparent;
+  scrollbar-color: var(--mozilla-scrollbar-colors);
+  scrollbar-width: thin;
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: transparent;
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: rgba(var(--value-blue), 0.5);
+
+    &:hover {
+      background-color: rgba(var(--value-blue), 0.7);
+    }
+  }
+
+  ::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+}

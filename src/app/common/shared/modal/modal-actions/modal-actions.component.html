@@ -1,0 +1,32 @@
+<div mat-dialog-actions class="modal-actions" *ngIf="actions">
+  <ng-container *ngFor="let action of actions">
+    <ng-container [ngSwitch]="action.type">
+      <ng-container *ngSwitchCase="'submit'">
+        <ng-container
+          *ngIf="(action.isFlatButton | typeof: 'not-boolean') || ((action.isFlatButton | typeof: 'boolean') && action.isFlatButton)"
+        >
+          <button mat-flat-button class="modal-actions__button" [color]="action.color">
+            {{ action.name | translate }}
+          </button>
+        </ng-container>
+        <ng-container *ngIf="(action.isFlatButton | typeof: 'boolean') && !action.isFlatButton">
+          <button mat-stroked-button class="modal-actions__button" [color]="action.color">
+            {{ action.name | translate }}
+          </button>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'close'">
+        <ng-container *ngIf="action.isFlatButton">
+          <button mat-flat-button class="modal-actions__button" [mat-dialog-close]="action.value" [color]="action.color">
+            {{ action.name | translate }}
+          </button>
+        </ng-container>
+        <ng-container *ngIf="!action.isFlatButton">
+          <button mat-stroked-button class="modal-actions__button" [mat-dialog-close]="action.value" [color]="action.color">
+            {{ action.name | translate }}
+          </button>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>

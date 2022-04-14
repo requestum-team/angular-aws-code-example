@@ -1,0 +1,73 @@
+<form [formGroup]="formGroup" class="main-info-form" (ngSubmit)="onSubmit()">
+  <div class="main-info-form__content">
+    <div class="main-info-form__avatar-wrap">
+      <photo-menu [control]="form?.avatar" [name]="me?.fullName"></photo-menu>
+      <div class="main-info-form__personal">
+        <div class="main-info-form__personal-name">{{ me?.fullName }}</div>
+        <cropped-text [text]="me?.email" class="main-info-form__personal-email"></cropped-text>
+      </div>
+
+      <button mat-icon-button class="main-info-form__icon-button" type="button" (click)="logout()">
+        <mat-icon class="main-info-form__icon" svgIcon="logout"></mat-icon>
+      </button>
+    </div>
+    <div class="main-info-form__fields">
+      <base-form-input
+        [control]="form?.email"
+        [placeholder]="'INPUT_NAME.EMAIL' | translate"
+        class="main-info-form__input"
+      ></base-form-input>
+      <div class="main-info-form__row">
+        <base-form-input
+          [control]="form?.firstName"
+          [placeholder]="'INPUT_NAME.FIRST_NAME' | translate"
+          class="main-info-form__input"
+        ></base-form-input>
+        <base-form-input
+          [control]="form?.lastName"
+          [placeholder]="'INPUT_NAME.LAST_NAME' | translate"
+          class="main-info-form__input"
+        ></base-form-input>
+      </div>
+
+      <base-autocomplete
+        [control]="form?.organisation"
+        [options]="organisations"
+        [placeholder]="'INPUT_NAME.PRIMARY_ORGANIZATION' | translate"
+        (keywordDefined)="onOrganisationKeywordDefined($event)"
+        paramName="name"
+        class="main-info-form__input"
+      ></base-autocomplete>
+
+      <base-select [control]="form?.country" [options]="COUNTRIES" [placeholder]="'INPUT_NAME.COUNTRY' | translate"></base-select>
+      <div class="main-info-form__row main-info-form__row_action" (click)="changePassword()">
+        <base-form-input
+          class="main-info-form__input"
+          value="••••••••••••••••"
+          [disabled]="true"
+          [inputType]="InputType.text"
+          [placeholder]="'INPUT_NAME.NEW_PASSWORD' | translate"
+          autocomplete="new-password"
+        ></base-form-input>
+        <span class="main-info-form__input-action-text">{{ 'BUTTON_NAME.CHANGE' | translate }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="main-info-form__controls">
+    <button class="main-info-form__button" color="primary" mat-flat-button>
+      {{ 'BUTTON_NAME.SAVE' | translate }}
+    </button>
+    <button (click)="cancel()" class="main-info-form__button" color="primary" mat-stroked-button type="button">
+      {{ 'BUTTON_NAME.CANCEL' | translate }}
+    </button>
+    <button
+      (click)="deleteAccount()"
+      type="button"
+      class="main-info-form__button main-info-form__button_delete-account"
+      color="primary"
+      mat-stroked-button
+    >
+      {{ 'BUTTON_NAME.DELETE_ACCOUNT' | translate }}
+    </button>
+  </div>
+</form>

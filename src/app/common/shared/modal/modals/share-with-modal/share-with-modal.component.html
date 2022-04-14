@@ -1,0 +1,40 @@
+<form [formGroup]="formGroup" class="dialog__share-content" (ngSubmit)="onSubmit()">
+  <mat-radio-group formControlName="shareType" class="dialog__radio-group">
+    <mat-radio-button class="dialog__radio-button" [value]="1">{{ 'SEARCH.SEND_TO_REGISTERED' | translate }}</mat-radio-button>
+    <mat-radio-button class="dialog__radio-button" [value]="2">{{ 'SEARCH.SEND_VIA_EMAIL' | translate }}</mat-radio-button>
+  </mat-radio-group>
+  <ng-container *ngIf="form.shareType.value === 1">
+    <multiselect-autocomplete
+      [placeholder]="'INPUT_NAME.EMAIL_OR_USER' | translate"
+      key="options"
+      [data]="users"
+      [searchFields]="searchFields"
+      [displaySearchField]="'fullName'"
+      (selectChange)="selectChange($event)"
+      [optionTemplate]="optionTemplate"
+    ></multiselect-autocomplete>
+  </ng-container>
+
+  <ng-container *ngIf="form.shareType.value === 2">
+    <base-form-input [control]="form.email" [placeholder]="'INPUT_NAME.EMAIL_ADDRESS' | translate"></base-form-input>
+    <base-textarea [control]="form.message" [placeholder]="'INPUT_NAME.MESSAGE' | translate"></base-textarea>
+  </ng-container>
+
+  <modal-actions [actions]="actions"></modal-actions>
+</form>
+<ng-template #optionTemplate let-item>
+  <div class="option-item">
+    <div
+      *ngIf="item.avatar; else noImage"
+      class="option-item__img option-item__img_avatar"
+      [style.background-image]="'url(' + item.avatar + ')'"
+    ></div>
+    <ng-template #noImage>
+      <mat-icon class="option-item__noimg" svgIcon="image"></mat-icon>
+    </ng-template>
+    <div class="option-item__title">
+      {{ item.fullName }}
+      <div class="option-item__organisation">{{ item.organisation?.name }}</div>
+    </div>
+  </div>
+</ng-template>

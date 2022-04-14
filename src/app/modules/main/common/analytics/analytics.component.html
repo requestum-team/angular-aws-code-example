@@ -1,0 +1,127 @@
+<ng-template #toolbarTemplate></ng-template>
+<div class="main">
+  <section class="main__section main__section-content">
+    <h2 class="main__title">{{ 'ANALYTICS.DOCUMENT_TYPE_TITLE' | translate }}</h2>
+    <div class="documents-doughnut">
+      <div class="documents-doughnut__graph">
+        <canvas
+          baseChart
+          [options]="pieChartOptions"
+          #partsBaseChart="base-chart"
+          [data]="doughnutChartData"
+          [type]="doughnutChartType"
+          [legend]="false"
+        ></canvas>
+      </div>
+
+      <ul *ngIf="partsChartLegendItems" class="documents-doughnut__legends">
+        <li *ngFor="let item of partsChartLegendItems; let i = index" class="documents-doughnut__legend">
+          <span class="documents-doughnut__box" [ngStyle]="{ 'background-color': item.fillStyle }"></span>
+          <span class="documents-doughnut__title">{{ item.text }}</span>
+          <span class="documents-doughnut__desc">{{ doughnutChartNumbers[i] / 100 || 0 | percent }}</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <aside class="main__aside">
+    <section class="main__section">
+      <h2 class="main__title">{{ 'ANALYTICS.YOUR_DOCUMENTS_TITLE' | translate }}</h2>
+      <div class="documents-statistics">
+        <div class="documents-statistics__data">
+          <span class="documents-statistics__current">{{ getLastValue(documentsYours).data }}</span>
+          <span class="documents-statistics__changes">
+            {{ Math.abs(getLastValue(documentsYours).changes) | percent }}
+            <mat-icon
+              *ngIf="getLastValue(documentsYours).changes > 0"
+              class="documents-statistics__icon documents-statistics__icon-up"
+              [svgIcon]="'arrow-upward'"
+            ></mat-icon>
+            <mat-icon
+              *ngIf="getLastValue(documentsYours).changes < 0"
+              class="documents-statistics__icon documents-statistics__icon-down"
+              [svgIcon]="'arrow-downward'"
+            ></mat-icon>
+            <mat-icon
+              *ngIf="getLastValue(documentsYours).changes === 0"
+              class="documents-statistics__icon documents-statistics__icon-same"
+            ></mat-icon>
+
+            {{ 'ANALYTICS.THAN_LAST_YEAR' | translate }}
+          </span>
+        </div>
+        <div class="documents-statistics__graph">
+          <canvas baseChart [data]="documentsYoursChartData" [options]="lineChartOptions" [type]="lineChartType" [legend]="false"></canvas>
+        </div>
+      </div>
+    </section>
+    <section class="main__section">
+      <h2 class="main__title">{{ 'ANALYTICS.NEW_DOCUMENTS_TITLE' | translate }}</h2>
+      <div class="documents-statistics">
+        <div class="documents-statistics__data">
+          <span class="documents-statistics__current">{{ getLastValue(documentsSecured).data }}</span>
+          <span class="documents-statistics__changes">
+            {{ Math.abs(getLastValue(documentsSecured).changes) | percent }}
+            <mat-icon
+              *ngIf="getLastValue(documentsSecured).changes > 0"
+              class="documents-statistics__icon documents-statistics__icon-up"
+              [svgIcon]="'arrow-upward'"
+            ></mat-icon>
+            <mat-icon
+              *ngIf="getLastValue(documentsSecured).changes < 0"
+              class="documents-statistics__icon documents-statistics__icon-down"
+              [svgIcon]="'arrow-downward'"
+            ></mat-icon>
+            <mat-icon
+              *ngIf="getLastValue(documentsSecured).changes === 0"
+              class="documents-statistics__icon documents-statistics__icon-same"
+            ></mat-icon>
+
+            {{ 'ANALYTICS.THAN_LAST_YEAR' | translate }}
+          </span>
+        </div>
+        <div class="documents-statistics__graph">
+          <canvas baseChart [data]="documentsNewChartData" [options]="lineChartOptions" [type]="lineChartType" [legend]="false"></canvas>
+        </div>
+      </div>
+    </section>
+    <section class="main__section">
+      <h2 class="main__title">{{ 'ANALYTICS.NETWORK_SECURITY_TITLE' | translate }}</h2>
+
+      <div class="documents-statistics">
+        <div class="documents-statistics__data">
+          <h2 class="main__subtitle">{{ 'ANALYTICS.NETWORK_SECURITY_SUBTITLE' | translate }}</h2>
+          <span class="documents-statistics__current">{{ getLastValue(networkSecured).data }}</span>
+          <span class="documents-statistics__changes">
+            <ng-container *ngIf="getLastValue(networkSecured).changes !== 0">
+              {{ Math.abs(getLastValue(networkSecured).changes) | percent }}
+            </ng-container>
+
+            <mat-icon
+              *ngIf="getLastValue(networkSecured).changes > 0"
+              class="documents-statistics__icon documents-statistics__icon-up"
+              [svgIcon]="'arrow-upward'"
+            ></mat-icon>
+            <mat-icon
+              *ngIf="getLastValue(networkSecured).changes < 0"
+              class="documents-statistics__icon documents-statistics__icon-down"
+              [svgIcon]="'arrow-downward'"
+            ></mat-icon>
+            <mat-icon
+              *ngIf="getLastValue(networkSecured).changes === 0"
+              class="documents-statistics__icon documents-statistics__icon-same"
+            ></mat-icon>
+            <ng-container *ngIf="getLastValue(networkSecured).changes !== 0">
+              {{ 'ANALYTICS.THAN_LAST_YEAR' | translate }}
+            </ng-container>
+            <ng-container *ngIf="getLastValue(networkSecured).changes === 0">
+              {{ 'ANALYTICS.SAME_LAST_YEAR' | translate }}
+            </ng-container>
+          </span>
+        </div>
+        <div class="documents-statistics__graph">
+          <canvas baseChart [data]="networkSecuredChartData" [options]="lineChartOptions" [type]="lineChartType" [legend]="false"></canvas>
+        </div>
+      </div>
+    </section>
+  </aside>
+</div>

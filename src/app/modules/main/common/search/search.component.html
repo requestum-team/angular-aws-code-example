@@ -1,0 +1,77 @@
+<div class="main">
+  <search-form #searchForm [formGroup]="formGroup" (submitted)="onSubmit()"></search-form>
+
+  <loader-container class="main__loading" [isLoading]="isLoading">
+    <div class="organizations" *ngIf="documents?.length > 0">
+      <h1 class="main__search-title">
+        {{ 'SEARCH.SEARCH_TITLE' | translate }}
+        <select-filter
+          class="main__sort-filter"
+          [options]="sortFilterOptions"
+          [filterName]="'sort'"
+          [placeholder]="'SEARCH.SORT' | translate"
+          (changeSelectFilter)="sortChange($event)"
+        ></select-filter>
+      </h1>
+      <items-list
+        [showSearch]="false"
+        [data]="documents"
+        [isExpandable]="true"
+        [initialData]="documents"
+        [columns]="filesColumns"
+      ></items-list>
+    </div>
+  </loader-container>
+
+  <ng-container *ngIf="documents && !documents.length">
+    <div class="main__no-results">
+      <mat-icon class="main__no-results-icon" [svgIcon]="'no-files'"></mat-icon>
+      <h2 class="main__no-results-title">{{ 'HOME.NO_FILES_TITLE' | translate }}</h2>
+      {{ 'HOME.NO_FILES_DESC' | translate }}
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #imgTemplate let-value let-item="item">
+  <img class="organization__img" [src]="null" [alt]="item?.name" />
+</ng-template>
+
+<ng-template #availableTemplate let-item>
+  <mat-icon [svgIcon]="'check'" *ngIf="item?.isAvailable" class="main__search-icon main__search-icon_available"></mat-icon>
+  <mat-icon [svgIcon]="'cross'" *ngIf="!item?.isAvailable" class="main__search-icon main__search-icon_unavailable"></mat-icon>
+</ng-template>
+
+<ng-template #dateTemplate let-value>
+  {{ value | date: DATE_FORMAT.FULL }}
+</ng-template>
+
+<ng-template #detailsTemplate let-item let-i="item">
+  <section class="main__accordion">
+    <div class="main__accordion-details">
+      <div class="main__qrcode">
+        <qr-code [value]="item.txId"></qr-code>
+      </div>
+      <div class="main__details-id">
+        <h3 class="main__details-title">{{ 'HOME.SEARCH_ID' | translate }}</h3>
+        <cropped-text [text]="item.txId"></cropped-text>
+      </div>
+    </div>
+    <dropdown
+      panelClass="expansion-menu-panel"
+      class="expansion-menu"
+      [displayArrow]="false"
+      [items]="dropdownItems.get(item)"
+      [disablePadding]="true"
+    >
+      <mat-icon [svgIcon]="'more'"></mat-icon>
+    </dropdown>
+  </section>
+</ng-template>
+
+<ng-template #dropdownExpansionItemTemplate let-item>
+  <ng-container *ngIf="item">
+    <div (click)="item.action()" *ngIf="item.action" class="expansion-menu__item">
+      <span class="expansion-menu__item-text">{{ item.title | translate }}</span>
+    </div>
+  </ng-container>
+</ng-template>

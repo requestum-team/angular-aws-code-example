@@ -1,0 +1,51 @@
+:root {
+  // VALUES
+
+  --value-black: 0, 0, 0; // #000
+  --value-white: 255, 255, 255; // #fff
+  --value-wireframe-1: 33, 39, 48; // #212730
+  --value-wireframe-2: 106, 114, 135; // #6A7287
+  --value-wireframe-3: 133, 143, 163; // #858FA3
+  --value-wireframe-4: 174, 185, 208; // #AEB9D0
+  --value-wireframe-5: 197, 211, 239; // #C5D3EF
+  --value-wireframe-6: 233, 236, 242; // #E9ECF2
+  --value-wireframe-hover: 249, 250, 255; // #F9FAFF
+  --value-green: 69, 196, 124; // #45C47C
+  --value-blue: 42, 78, 150; // #2A4E96
+  --value-orange: 253, 150, 30; // #FD961E
+  --value-yellow: 255, 220, 151; // #FFDC97
+  --value-light: 243, 233, 231; // #F3E9E7
+  --value-red: 212, 51, 51; // #D43333
+  --value-light-blue: 85, 131, 226; // #5583E2
+  --value-pink: 255, 188, 189; // #FFBCBD
+  --value-hover-button: 106, 154, 252; // #6A9AFC
+  --value-press-button: 67, 108, 192; // #436CC0
+  --value-light-yellow: 255, 230, 182; // #FFE6B6
+  --value-light-gray: 235, 241, 252; // #EBF1FC
+  --value-dark-gray: 38, 43, 37; // #262B25
+  // COLORS
+
+  --color-black: rgb(var(--value-black)); // #000
+  --color-white: rgb(var(--value-white)); // #fff
+  --color-wireframe-1: rgb(var(--value-wireframe-1)); // #212730
+  --color-wireframe-2: rgb(var(--value-wireframe-2)); // #6A7287
+  --color-wireframe-3: rgb(var(--value-wireframe-3)); // #858FA3
+  --color-wireframe-4: rgb(var(--value-wireframe-4)); // #AEB9D0
+  --color-wireframe-5: rgb(var(--value-wireframe-5)); // #C5D3EF
+  --color-wireframe-6: rgb(var(--value-wireframe-6)); // #E9ECF2
+  --color-wireframe-hover: rgb(var(--value-wireframe-hover)); // #F9FAFF
+  --color-green: rgb(var(--value-green)); // #45C47C
+  --color-blue: rgb(var(--value-blue)); // #2A4E96
+  --color-orange: rgb(var(--value-orange)); // #FD961E
+  --color-yellow: rgb(var(--value-yellow)); // #FFDC97
+  --color-light: rgb(var(--value-light)); // #F3E9E7
+  --color-red: rgb(var(--value-red)); // #D43333
+  --color-light-blue: rgb(var(--value-light-blue)); // #5583E2
+  --color-pink: rgb(var(--value-pink)); // #FFBCBD
+  --color-hover-button: rgb(var(--value-hover-button)); // #6A9AFC
+  --color-press-button: rgb(var(--value-press-button)); // #436CC0
+  --color-light-yellow: rgb(var(--value-light-yellow)); // #FFE6B6
+  --color-light-gray: rgb(var(--value-light-gray)); // #EBF1FC
+  --color-dark-gray: rgb(var(--value-dark-gray)); // #262B25;
+  --cropper-outline-color: rgb(var(--value-black));
+}

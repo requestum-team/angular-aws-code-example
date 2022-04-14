@@ -1,0 +1,23 @@
+<mat-drawer-container class="main-layout">
+  <mat-drawer
+    #sidenavMain
+    class="main-layout__drawer"
+    [mode]="sidenavMode$ | async"
+    [opened]="shouldBeOpen$ | async"
+    [disableClose]="shouldBeOpen$ | async"
+    [ngClass]="{ transitioned: (isHalfExpanded$ | async) === false }"
+  >
+    <navigation
+      class="main-layout__navigation"
+      [shouldCloseOnNav]="(shouldBeOpen$ | async) === false"
+      (navClick)="sidenavMain.close()"
+    ></navigation>
+  </mat-drawer>
+  <mat-drawer-content [ngClass]="{ transitioned: (isHalfExpanded$ | async) === false }" class="main-layout__content">
+    <div class="main-layout__wrapper">
+      <main-header (toggleSidenav)="sidenavMain.toggle()"></main-header>
+      <toolbar class="main-layout__toolbar"></toolbar>
+      <router-outlet class="main-layout__router-outlet"></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

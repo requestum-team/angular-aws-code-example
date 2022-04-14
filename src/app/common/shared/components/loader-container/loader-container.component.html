@@ -1,0 +1,10 @@
+<div class="loader-container" [class.is-loading]="isLoading">
+  <div class="loader-container__loader">
+    <h1 class="loader-container__title">{{ 'LOADING.TITLE' | translate }}</h1>
+    <p class="loader-container__description">{{ 'LOADING.DESCRIPTION' | translate }}</p>
+    <mat-spinner diameter="44" color="accent"></mat-spinner>
+  </div>
+  <div class="loader-container__content">
+    <ng-content></ng-content>
+  </div>
+</div>

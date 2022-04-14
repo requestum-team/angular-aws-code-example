@@ -1,0 +1,21 @@
+<dropdown
+  [isTranslateY]="true"
+  [disablePadding]="true"
+  [items]="items"
+  class="profile-menu mat-elevation-z0"
+  panelClass="profile-menu-panel"
+>
+  <img src="/assets/img/jpg/default-avatar.jpg" alt="Avatar" class="profile-menu__avatar" />
+  <cropped-text [text]="name" class="profile-menu__username"></cropped-text>
+</dropdown>
+
+<ng-template #dropdownMenuItemTemplate let-item>
+  <ng-container *ngIf="toProfileMenuItemType(item) as item">
+    <div (click)="item.action()" *ngIf="item.action" class="profile-menu__item">
+      <span class="profile-menu__item-text">{{ item.title | translate }}</span>
+    </div>
+    <a *ngIf="item.link" [routerLink]="item.link" class="profile-menu__item" routerLinkActive="active">
+      <span class="profile-menu__item-text">{{ item.title | translate }}</span>
+    </a>
+  </ng-container>
+</ng-template>

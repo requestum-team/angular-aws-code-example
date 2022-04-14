@@ -1,0 +1,82 @@
+@import "variables/modules/breakpoints";
+
+.main {
+  &__controls {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    margin-top: 2rem;
+
+    .main__button {
+      min-width: 15rem;
+    }
+
+    &.main__controls-desktop {
+      display: none;
+    }
+  }
+
+  @media (min-width: $mobile-m) {
+    &__controls {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      margin-bottom: 2rem;
+
+      .main__button {
+        &:first-child {
+          margin-right: 2rem;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $tablet-l) {
+    &__controls {
+      &:not(.main__controls-desktop) {
+        display: none;
+      }
+
+      &.main__controls-desktop {
+        display: flex;
+
+        .mat-button {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+
+  &__section {
+    background: var(--color-white);
+    padding: 3rem 1.5rem;
+    margin: 0 -1.5rem;
+
+    @media (min-width: $tablet-s) {
+      padding-right: 3rem;
+      padding-left: 3rem;
+    }
+  }
+
+  &__title {
+    font-family: var(--ff-title-font);
+    font-weight: var(--fw-bold);
+    margin: 0 0 2.6rem;
+  }
+}
+
+.main-info-form {
+  max-width: 60rem;
+
+  &__toggle {
+    display: flex;
+    width: 100%;
+    color: var(--color-wireframe-1);
+    margin: 0 0 2.6rem;
+    justify-content: space-between;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}

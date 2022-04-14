@@ -1,0 +1,11 @@
+.dialog {
+  &__radio-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__radio-button {
+    margin-bottom: 2rem;
+    color: var(--color-wireframe-2);
+  }
+}

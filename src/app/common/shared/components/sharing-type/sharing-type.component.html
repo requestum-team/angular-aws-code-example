@@ -1,0 +1,7 @@
+<swiper-slider [config]="params" [slideTemplate]="primarySlide" [slides]="slides" class="slider__primary"></swiper-slider>
+<ng-template #primarySlide let-item>
+  <div class="sharing-item" (click)="selectType(item.value)" [class.active]="item?.value === value">
+    <mat-icon [svgIcon]="item.icon"></mat-icon>
+    <h3 class="sharing-item-title">{{ item.title | translate }}</h3>
+  </div>
+</ng-template>

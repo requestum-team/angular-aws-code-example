@@ -1,0 +1,237 @@
+@import "variables/modules/breakpoints";
+
+.organization {
+  &__img {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    background-size: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+
+    img {
+      max-width: 100%;
+    }
+
+    &_avatar {
+      border-radius: 50%;
+    }
+
+    &__noimg {
+      width: 3rem;
+      height: 3rem;
+      color: var(--color-wireframe-4);
+      flex-shrink: 0;
+    }
+  }
+
+  @media (min-width: $tablet-s) {
+    &__img {
+      width: 7rem;
+      height: 7rem;
+    }
+
+    &__noimg {
+      width: 3rem;
+      height: 3rem;
+      color: var(--color-wireframe-4);
+      flex-shrink: 0;
+    }
+  }
+}
+
+.expansion-menu {
+  &__item {
+    display: flex;
+    font-size: 1.6rem;
+    align-items: center;
+    line-height: 1.5;
+    color: var(--color-wireframe-1);
+    min-width: 14rem;
+    padding: 0.7em 2rem 0.7em 1rem;
+    text-decoration: none;
+
+    &:hover {
+      background: var(--color-wireframe-hover);
+    }
+  }
+
+  &__item-text {
+    .active & {
+      font-weight: var(--fw-medium);
+    }
+  }
+}
+
+.main {
+  margin: 0 -1.5rem;
+
+  &__form-wrap {
+    padding: 0 1.5rem;
+    background: var(--color-white);
+    margin-top: 1rem;
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__col {
+    flex-grow: 1;
+  }
+
+  &__no-results {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: var(--color-white);
+    text-align: center;
+    line-height: 1.5;
+    padding: 3rem;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 0.5rem;
+      height: 30%;
+      position: absolute;
+      top: 3.3rem;
+      left: 0;
+      background: var(--color-red);
+    }
+  }
+
+  &__no-results-title {
+    font-weight: var(--fw-bold);
+    font-family: var(--ff-title-font);
+    margin: 3rem 0 1.5rem;
+  }
+
+  &__no-results-icon {
+    width: 5.6rem;
+    height: 7.8rem;
+  }
+
+  &__button {
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  &__search-title {
+    font-family: var(--ff-title-font);
+    font-size: 1.8rem;
+    line-height: 1.5;
+    font-weight: var(--fw-semi-bold);
+    padding: 2.2rem 1.5rem;
+    background: var(--color-white);
+    margin: 1rem 0;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0.4rem;
+      height: 100%;
+      background: var(--color-green);
+    }
+  }
+
+  &__search-icon {
+    &_available {
+      width: 1.6rem;
+      height: 1.6rem;
+      color: var(--color-light-blue);
+    }
+
+    &_unavailable {
+      width: 1.6rem;
+      height: 1.6rem;
+      color: var(--color-wireframe-4);
+    }
+  }
+
+  &__accordion-details {
+    border: 1px solid var(--color-wireframe-4);
+    border-radius: 4px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    max-width: calc(100% - 24px);
+    flex-grow: 1;
+  }
+
+  &__accordion {
+    display: flex;
+    align-items: center;
+
+    .expansion-menu {
+      &::ng-deep {
+        .mat-button {
+          min-width: auto;
+          color: var(--color-wireframe-4);
+        }
+      }
+    }
+  }
+
+  &__details-id {
+    margin-left: 2rem;
+    color: var(--color-wireframe-3);
+    max-width: 70%;
+  }
+
+  &__details-title {
+    font-weight: var(--fw-semi-bold);
+    color: var(--color-wireframe-1);
+  }
+
+  @media (min-width: $tablet-s) {
+    &__form {
+      max-width: 60rem;
+    }
+
+    &__button {
+      max-width: 20rem;
+      font-size: 1.6rem;
+    }
+
+    &__row {
+      flex-direction: row;
+    }
+
+    &__col {
+      &:first-child {
+        padding-right: 1rem;
+      }
+
+      &:last-child {
+        padding-left: 1rem;
+      }
+    }
+
+    &__protect-results {
+      font-size: 1.6rem;
+
+      margin-top: 2rem;
+      background: var(--color-white);
+      padding: 3rem;
+
+      p {
+        max-width: 60rem;
+      }
+    }
+
+    &__protect-result-card {
+      padding: 2rem;
+      max-width: 60rem;
+    }
+
+    &__protect-result-info {
+      margin-left: 2rem;
+      flex-basis: 60%;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+@import "variables/modules/breakpoints";
+
+.notifications {
+  &__list {
+    background: var(--color-white);
+    margin: 0 -1.5rem;
+  }
+
+  &__empty {
+    background: var(--color-white);
+    min-height: 64.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__empty-title {
+    font-family: var(--ff-title-font);
+    color: var(--color-wireframe-3);
+    font-weight: var(--fw-medium);
+    font-size: 1.8rem;
+    margin-top: 4rem;
+  }
+
+  &__message {
+    line-height: 1.5;
+  }
+
+  &__icon-bell {
+    width: 12.1rem;
+    height: 14.4rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__bell {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: -2rem;
+      top: -1.5rem;
+      width: 10.5rem;
+      height: 10.5rem;
+      border-radius: 50%;
+      background: var(--color-light-yellow);
+      z-index: 1;
+    }
+  }
+
+  &__item {
+    padding: 2rem 3rem;
+    position: relative;
+
+    &.notifications__item-unread {
+      border-left: 0.2rem solid var(--color-light-blue);
+    }
+
+    &::after {
+      content: "";
+      width: calc(100% - 6rem);
+      position: absolute;
+      height: 0.1rem;
+      background-color: var(--color-wireframe-5);
+      bottom: 0;
+      left: 3rem;
+      right: 3rem;
+    }
+  }
+
+  &__date {
+    font-size: 1.4rem;
+    color: var(--color-wireframe-3);
+    margin-top: 1rem;
+  }
+
+  @media (min-width: $tablet-s) {
+    &__list {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}

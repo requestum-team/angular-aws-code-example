@@ -1,0 +1,68 @@
+@import "variables/modules/breakpoints";
+
+.spacer {
+  flex: 1 0 auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0 2rem 10rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--container-mobile-width);
+
+  @media (min-width: $tablet-s) {
+    max-width: var(--container-tablet-width);
+  }
+
+  @media (min-width: $desktop-m) {
+    max-width: var(--container-width);
+  }
+}
+
+a {
+  color: var(--color-wireframe-1);
+  text-decoration: none;
+
+  &:active,
+  &:hover {
+    color: var(--color-wireframe-2);
+    text-decoration: underline;
+  }
+
+  @media (min-width: $tablet-s) {
+    color: var(--color-light-blue);
+  }
+}
+
+.btn {
+  &_toolbar {
+    align-self: flex-start;
+
+    &.mat-flat-button {
+      min-width: 20rem;
+    }
+  }
+}
+
+.mobile-pd {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  @media (min-width: $tablet-s) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.mobile-mg {
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+
+  @media (min-width: $tablet-s) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

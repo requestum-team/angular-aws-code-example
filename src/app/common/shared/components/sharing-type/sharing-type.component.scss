@@ -1,0 +1,36 @@
+.sharing-item {
+  width: 18.6rem;
+  height: 15.3rem;
+  border: 1px solid var(--color-wireframe-4);
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-wireframe-1);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  .mat-icon {
+    width: 5.8rem;
+    height: 4.2rem;
+  }
+
+  &-title {
+    max-width: 15rem;
+    text-align: center;
+    margin: 3rem auto 0;
+    line-height: 1.5;
+  }
+
+  &.active {
+    border-color: var(--color-orange);
+  }
+}
+
+.slider__primary {
+  &::ng-deep {
+    .swiper-slide {
+      width: 18.6rem;
+    }
+  }
+}

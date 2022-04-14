@@ -1,0 +1,33 @@
+<div class="main__form-wrap">
+  <form [formGroup]="formGroup" class="main__form" (ngSubmit)="onSubmit()">
+    <div class="main__content">
+      <div class="main__fields">
+        <div class="main__row">
+          <div class="main__col">
+            <base-form-input [control]="form?.subjectId" [placeholder]="'INPUT_NAME.STUDENT_ID' | translate"></base-form-input>
+          </div>
+          <div class="main__col">
+            <base-datepicker [control]="form?.doi" [placeholder]="'INPUT_NAME.DATE' | translate"></base-datepicker>
+          </div>
+        </div>
+        <file-uploader
+          [control]="form.document"
+          [placeholder]="'INPUT_NAME.FILE_UPLOAD' | translate"
+          [previewHeight]="80"
+          [multiple]="false"
+          [maxSizeFile]="2"
+          [actionsXPosition]="'end'"
+          [actionsYPosition]="'center'"
+        ></file-uploader>
+      </div>
+    </div>
+    <div class="main__controls">
+      <button [disabled]="true" class="main__button" color="primary" mat-flat-button>
+        {{ 'BUTTON_NAME.PROTECT' | translate }}
+      </button>
+    </div>
+  </form>
+</div>
+<loader-container [isLoading]="isLoading">
+  <protect-results *ngIf="response" [ID]="response?.data"></protect-results>
+</loader-container>

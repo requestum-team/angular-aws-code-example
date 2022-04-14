@@ -1,0 +1,13 @@
+<form [formGroup]="formGroup" class="dialog__file-content" (ngSubmit)="onSubmit()">
+  <file-uploader
+    [control]="control"
+    [placeholder]="'INPUT_NAME.AVATAR' | translate"
+    [previewHeight]="400"
+    [previewWidth]="345"
+    [isAvatar]="true"
+    [multiple]="false"
+    [maxSizeFile]="2"
+    [placeholderBrowse]="'INPUT_NAME.AVATAR_BROWSE' | translate"
+  ></file-uploader>
+  <modal-actions [actions]="actions"></modal-actions>
+</form>

@@ -1,0 +1,68 @@
+<div class="search-results">
+  <h2 class="search-results__subtitle">{{ 'PROFILE.ADD_USER' | translate }}</h2>
+  <div class="search-results__row">
+    <div class="search-results__col">
+      <base-form-input
+        [control]="userNameControl"
+        [inputType]="InputType.text"
+        [placeholder]="'PROFILE.USER_NAME' | translate"
+        autocomplete="off"
+        class="organization-search__input"
+        [matAutocomplete]="auto"
+        [showClear]="true"
+        (clear)="onClear(userNameControl)"
+      ></base-form-input>
+
+      <mat-autocomplete
+        autoActiveFirstOption
+        #auto="matAutocomplete"
+        (optionSelected)="selectNameOption($event)"
+        [displayWith]="getNameOption"
+      >
+        <mat-option *ngFor="let option of filteredUserNameOptions | async" [value]="option">
+          <div class="search-results__list-item">
+            <div
+              *ngIf="option.avatar; else noImage"
+              class="search-results__img"
+              [style.background-image]="'url(' + option.avatar + ')'"
+            ></div>
+            <ng-template #noImage>
+              <mat-icon class="search-results__noimg" svgIcon="image"></mat-icon>
+            </ng-template>
+            <cropped-text [text]="option.fullName"></cropped-text>
+          </div>
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+    <div class="search-results__col">
+      <base-form-input
+        [control]="userEmailControl"
+        [inputType]="InputType.text"
+        [placeholder]="'PROFILE.EMAIL_ADDRESS' | translate"
+        autocomplete="off"
+        class="organization-search__input"
+        [matAutocomplete]="auto2"
+        [showClear]="true"
+        (clear)="onClear(userEmailControl)"
+      ></base-form-input>
+
+      <mat-autocomplete
+        autoActiveFirstOption
+        #auto2="matAutocomplete"
+        (optionSelected)="selectEmailOption($event)"
+        [displayWith]="getEmailOption"
+      >
+        <mat-option *ngFor="let option of filteredUserEmailOptions | async" [value]="option">
+          <div class="search-results__list-item">
+            <cropped-text [text]="option.email"></cropped-text>
+          </div>
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+    <div class="search-results__col search-results__col_btn">
+      <button class="search-results__button" color="primary" mat-flat-button (click)="btnClick()">
+        {{ 'PROFILE.ADD_USER' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

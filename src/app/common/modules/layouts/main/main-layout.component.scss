@@ -1,0 +1,61 @@
+@import "variables/modules/breakpoints";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-height: 100vh;
+  overflow-y: auto;
+
+  &__wrapper {
+    padding: 0 1.5rem;
+  }
+
+  &__content {
+    padding: 0;
+    max-width: 132rem;
+    width: 100%;
+  }
+
+  @media (min-width: $tablet-s) {
+    &__content {
+      width: auto;
+      max-width: none;
+      margin-left: 270px;
+
+      &.transitioned {
+        margin-left: 62px;
+      }
+    }
+
+    &__drawer {
+      border-right: 0;
+      background: transparent;
+      overflow-x: visible;
+      padding-right: 1.3rem;
+
+      &.transitioned {
+        padding-right: 0.1rem;
+
+        &::ng-deep {
+          .mat-drawer-inner-container {
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: $tablet-l) {
+    &__wrapper {
+      max-width: 113rem;
+      margin: 0 auto;
+    }
+  }
+}
