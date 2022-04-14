@@ -30,22 +30,3 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-## Deployment script
-
-You can run `npm run deploy:dev` to build and deploy code to dev or stage instance.
-You need to add some configs for successful deployment (`.env.dev`).
-
-Example of `.env.dev`
-```shell
-INSTANCE_USERNAME=
-INSTANCE_KEY=
-INSTANCE_HOST=
-INSTANCE_DEPLOY_PATH=
-```
-or
-```shell
-INSTANCE_USERNAME=
-INSTANCE_PASSWORD=
-INSTANCE_HOST=
-INSTANCE_DEPLOY_PATH=
-```

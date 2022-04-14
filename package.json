@@ -15,8 +15,6 @@
     "lint:all": "npm run lint && npm run lint:scss",
     "prettier": "prettier --write \"src/**/*.*(ts|js|json|html)\"",
     "pretty-quick": "pretty-quick --staged --pattern \"src/**/*.*(ts|js|json|html)\"",
-    "deploy:dev": "run-s build update-env:dev",
-    "update-env:dev": "bash bin/update-env/ssh-deploy.sh .env.dev front-end/",
     "hook:pre-commit": "npm run pretty-quick && npm run lint:all"
   },
   "private": true,
